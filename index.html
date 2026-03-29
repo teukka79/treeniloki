@@ -81,6 +81,11 @@
         .quick-select-btn { width: 38px; height: 38px; background: var(--glass-btn); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; }
         .quick-menu { position: absolute; background: var(--bg-base); border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); z-index: 10000; max-height: 200px; overflow-y: auto; width: 200px; display: none; }
         .quick-menu div { padding: 12px; border-bottom: 1px solid var(--border); cursor: pointer; font-size: 14px; font-weight: 500; }
+
+        /* Ohjetekstien tyyli */
+        .help-section { margin-bottom: 15px; }
+        .help-section b { color: var(--accent); display: block; margin-bottom: 5px; text-transform: uppercase; font-size: 12px; }
+        .help-section p { font-size: 14px; margin: 0; line-height: 1.4; opacity: 0.9; }
     </style>
 </head>
 <body>
@@ -105,11 +110,46 @@
     <div id="quickMenu" class="quick-menu"></div>
     <div id="historyModal" class="modal"><div id="historyContent"></div><button class="glass-btn btn-done" onclick="closeModal('historyModal')">SULJE</button></div>
     
+    <div id="helpModal" class="modal">
+        <div class="modal-header">
+            <div style="width:38px;"></div>
+            <h2 style="text-align:center; margin:0;">Ohjeistus</h2>
+            <div style="width:38px;"></div>
+        </div>
+        <div class="edit-card">
+            <div class="help-section">
+                <b>Luo uusi ohjelma</b>
+                <p>Kirjoita nimi tekstikenttään ja paina "LUO". Tämä luo uuden tyhjän treenipohjan asetuksiin.</p>
+            </div>
+            <div class="help-section">
+                <b>Vie / Tuo ohjelma</b>
+                <p>Voit ladata nykyiset ohjelmasi tiedostona talteen tai ladata aiemmin tallennetun varmuuskopion.</p>
+            </div>
+            <div class="help-section">
+                <b>Muokkaa ohjelmaa</b>
+                <p>Valitse ohjelma listasta. Voit poistaa ohjelman roskakori-kuvakkeesta tai lisätä siihen uusia liikkeitä.</p>
+            </div>
+            <div class="help-section">
+                <b>Salama-painike (Bolt)</b>
+                <p>Avaa pikavalinnan esitallennetuista liikkeistä. Voit lisätä omia liikkeitäsi pikavalintaan sivun alaosassa.</p>
+            </div>
+            <div class="help-section">
+                <b>Tankojen painot</b>
+                <p>Määritä tankojen omapainot. Sovellus lisää valitun tangon painon automaattisesti kokonaistulokseen päänäkymässä.</p>
+            </div>
+            <div class="help-section">
+                <b>Pikavalinta liikkeet</b>
+                <p>Lisää tähän usein käyttämiäsi liikkeitä, jotta voit poimia ne helposti ohjelmaa muokatessa.</p>
+            </div>
+        </div>
+        <button class="glass-btn btn-done" onclick="closeModal('helpModal')">SELVÄ</button>
+    </div>
+
     <div id="editModal" class="modal">
         <div class="modal-header">
             <button class="home-btn" onclick="closeModal('editModal')"><span class="material-symbols-rounded">home</span></button>
             <h2 style="text-align:center; margin:0;">Asetukset</h2>
-            <div style="width:38px;"></div>
+            <button class="home-btn" onclick="openHelp()"><span class="material-symbols-rounded">help</span></button>
         </div>
         
         <div class="edit-card">
@@ -166,6 +206,11 @@
         let history = JSON.parse(localStorage.getItem('hist_v105') || "[]");
         let curKey = localStorage.getItem('last_v105') || Object.keys(customP)[0];
         let tempEditKey = "";
+
+        // Ohjeen avaaminen
+        function openHelp() {
+            document.getElementById('helpModal').style.display = 'block';
+        }
 
         function renderMain() {
             const sel = document.getElementById('workoutSelector');
