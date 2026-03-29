@@ -61,6 +61,10 @@
         .glass-btn { padding: 0 14px; border-radius: 10px; font-family: 'Inter', sans-serif; font-weight: 800; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; height: 48px; box-sizing: border-box; text-transform: uppercase; border: none; letter-spacing: 0.5px; }
         
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-base); z-index: 9999; overflow-y: auto; padding: 20px 0; font-family: 'Inter', sans-serif !important; }
+        
+        /* OHJE-MODAALIN ERITYISUUS: korkeampi z-index jotta se tulee Asetusten päälle */
+        #helpModal { z-index: 10001; }
+
         .btn-done { background: #4A5568 !important; color: white !important; width: 140px; margin: 30px auto; display: block; border-radius: 10px; }
         
         .modal-header { display: grid; grid-template-columns: 44px 1fr 44px; align-items: center; width: 92%; max-width: 500px; margin: 0 auto 20px auto; }
@@ -82,7 +86,6 @@
         .quick-menu { position: absolute; background: var(--bg-base); border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); z-index: 10000; max-height: 200px; overflow-y: auto; width: 200px; display: none; }
         .quick-menu div { padding: 12px; border-bottom: 1px solid var(--border); cursor: pointer; font-size: 14px; font-weight: 500; }
 
-        /* Ohjetekstien tyyli */
         .help-section { margin-bottom: 15px; }
         .help-section b { color: var(--accent); display: block; margin-bottom: 5px; text-transform: uppercase; font-size: 12px; }
         .help-section p { font-size: 14px; margin: 0; line-height: 1.4; opacity: 0.9; }
@@ -119,27 +122,27 @@
         <div class="edit-card">
             <div class="help-section">
                 <b>Luo uusi ohjelma</b>
-                <p>Kirjoita nimi tekstikenttään ja paina "LUO". Tämä luo uuden tyhjän treenipohjan asetuksiin.</p>
+                <p>Kirjoita nimi tekstikenttään ja paina "LUO". Tämä lisää uuden tyhjän treenipohjan listaan.</p>
             </div>
             <div class="help-section">
                 <b>Vie / Tuo ohjelma</b>
-                <p>Voit ladata nykyiset ohjelmasi tiedostona talteen tai ladata aiemmin tallennetun varmuuskopion.</p>
+                <p>Voit ladata ohjelmasi tiedostona talteen tai palauttaa aiemmin tallennetun varmuuskopion.</p>
             </div>
             <div class="help-section">
                 <b>Muokkaa ohjelmaa</b>
-                <p>Valitse ohjelma listasta. Voit poistaa ohjelman roskakori-kuvakkeesta tai lisätä siihen uusia liikkeitä.</p>
+                <p>Valitse ohjelma listasta. Voit poistaa ohjelman roskakorista tai lisätä uusia liikkeitä alhaalta.</p>
             </div>
             <div class="help-section">
                 <b>Salama-painike (Bolt)</b>
-                <p>Avaa pikavalinnan esitallennetuista liikkeistä. Voit lisätä omia liikkeitäsi pikavalintaan sivun alaosassa.</p>
+                <p>Voit valita liikkeen nimen nopeasti esitallennetuista suosikeistasi kirjoittamisen sijaan.</p>
             </div>
             <div class="help-section">
                 <b>Tankojen painot</b>
-                <p>Määritä tankojen omapainot. Sovellus lisää valitun tangon painon automaattisesti kokonaistulokseen päänäkymässä.</p>
+                <p>Aseta tangon omapaino tähän. Päänäkymässä sovellus laskee tämän painon mukaan kokonaistulokseen.</p>
             </div>
             <div class="help-section">
                 <b>Pikavalinta liikkeet</b>
-                <p>Lisää tähän usein käyttämiäsi liikkeitä, jotta voit poimia ne helposti ohjelmaa muokatessa.</p>
+                <p>Tässä voit hallita suosikkiliikkeitäsi, jotka ilmestyvät Salama-painikkeen alle.</p>
             </div>
         </div>
         <button class="glass-btn btn-done" onclick="closeModal('helpModal')">SELVÄ</button>
@@ -207,7 +210,6 @@
         let curKey = localStorage.getItem('last_v105') || Object.keys(customP)[0];
         let tempEditKey = "";
 
-        // Ohjeen avaaminen
         function openHelp() {
             document.getElementById('helpModal').style.display = 'block';
         }
