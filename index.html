@@ -26,7 +26,6 @@
             --iron-slate: rgba(74, 85, 104, 0.15); 
             --iron-text: #4a5568;
             --select-border: rgba(226, 232, 240, 0.8);
-            /* Väriteemat */
             --bolt-bg: rgba(159, 122, 234, 0.15);
             --bolt-color: #6b46c1;
             --home-btn-bg: rgba(74, 85, 104, 0.1);
@@ -82,7 +81,6 @@
         .btn-theme { color: var(--amber-icon); }
         .btn-settings { color: var(--slate-icon); }
 
-        /* ASETUKSIEN KOTINAPPI (IRON SLATE) */
         .btn-home-settings { background: var(--home-btn-bg); color: var(--home-btn-text); border: 1px solid var(--border); }
 
         .card-header-area { display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; padding-bottom: 15px; border-bottom: 1px solid var(--border); }
@@ -161,7 +159,7 @@
 
     <div class="nav">
         <div style="display:flex; gap:12px; max-width:500px; margin:0 auto;">
-            <button class="glass-btn" style="flex: 1; background: rgba(245, 101, 101, 0.2); color: #c53030;" onclick="renderMain()">NOLLAA</button>
+            <button class="glass-btn" style="flex: 1; background: rgba(245, 101, 101, 0.2); color: #c53030;" onclick="handleReset()">NOLLAA</button>
             <button class="glass-btn" style="flex: 2; background: var(--save-green-bg); color: var(--save-green-text);" onclick="saveData()">
                 <span class="material-symbols-rounded">save</span>TALLENNA
             </button>
@@ -189,10 +187,10 @@
                 </div>
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
                     <button class="glass-btn" style="background: var(--iron-slate); color: var(--iron-text);" onclick="exportData()">
-                        <span class="material-symbols-rounded">download</span>VIE OHJELMA
+                        <span class="material-symbols-rounded">download</span>VIE
                     </button>
                     <label class="glass-btn" style="background: var(--iron-slate); color: var(--iron-text); cursor: pointer;">
-                        <span class="material-symbols-rounded">upload</span>TUO OHJELMA
+                        <span class="material-symbols-rounded">upload</span>TUO
                         <input type="file" style="display:none" onchange="importData(event)">
                     </label>
                 </div>
@@ -224,17 +222,6 @@
             </button>
         </div>
 
-        <div class="edit-card">
-            <h4>Pikavalinta liikkeet</h4>
-            <div id="quickMoveSettings" style="display:flex; flex-direction:column; gap:8px;"></div>
-            <button class="glass-btn" style="width:100%; margin-top:15px; background:var(--badge-bg); color:var(--badge-text);" onclick="addQuickMove()">
-                <span class="material-symbols-rounded">add_circle</span>LISÄÄ PIKAVALINTA
-            </button>
-            <button class="glass-btn" style="width:100%; margin-top:10px; background:var(--save-green-bg); color:var(--save-green-text);" onclick="saveQuickMoves()">
-                <span class="material-symbols-rounded">save</span>TALLENNA
-            </button>
-        </div>
-
         <button class="glass-btn" style="margin: 30px auto; width: 140px; background: var(--iron-slate); color: var(--iron-text); display: block;" onclick="closeModal('editModal')">VALMIS</button>
     </div>
 
@@ -246,10 +233,8 @@
         </div>
         <div class="edit-card" style="font-size: 14px; line-height: 1.6;">
             <p><b>1. Ohjelmat:</b> Voit luoda useita eri treeniohjelmia. Valitse muokattava ohjelma listasta tai luo uusi "Lisää"-painikkeella.</p>
-            <p><b>2. Pikavalinnat (⚡):</b> Ohjelman muokkauksessa näkyvä purppura salama avaa pikavalinnan. Voit lisätä omia suosikkiliikkeitäsi asetusten alareunasta.</p>
-            <p><b>3. Tankojen painot:</b> Määritä tankojen painot kerran. Kun valitset liikkeelle tangon, sovellus laskee kokonaispainon puolestasi päänäkymässä.</p>
-            <p><b>4. Historia:</b> Tallentamasi treenit siirtyvät historiaan, josta näet myös viimeksi käytetyt painot kunkin liikkeen kohdalla.</p>
-            <p><b>5. Varmuuskopiointi:</b> Käytä "Vie ohjelma" -toimintoa tallentaaksesi asetuksesi tiedostoon. Voit palauttaa ne milloin vain "Tuo ohjelma" -napilla.</p>
+            <p><b>2. Pikavalinnat (⚡):</b> Ohjelman muokkauksessa näkyvä purppura salama avaa pikavalinnan.</p>
+            <p><b>3. Tankojen painot:</b> Määritä tankojen painot kerran. Sovellus laskee kokonaispainon puolestasi.</p>
         </div>
         <button class="glass-btn" style="margin: 20px auto; width: 140px; background: var(--iron-slate); color: var(--iron-text); display: block;" onclick="closeModal('helpModal')">SULJE</button>
     </div>
@@ -261,14 +246,12 @@
         
         let barWeights = JSON.parse(localStorage.getItem('bw_v105')) || BAR_DEFAULTS;
         let quickMoves = JSON.parse(localStorage.getItem('qm_v105')) || MOVE_DEFAULTS;
-        let customP = JSON.parse(localStorage.getItem('cp_v105')) || { "v1": { name: "Voima", exs: [{ id: "e1", n: "Pystypunnerrus", s: "3", r: "8-10", b: "Suora tanko" }] } };
+        let customP = JSON.parse(localStorage.getItem('cp_v105')) || {};
         let history = JSON.parse(localStorage.getItem('hist_v105') || "[]");
-        let curKey = localStorage.getItem('last_v105') || Object.keys(customP)[0];
+        let curKey = localStorage.getItem('last_v105') || (Object.keys(customP).length > 0 ? Object.keys(customP)[0] : "");
         let tempEditKey = "";
 
-        // OHJEEN AVAAMINEN
         function openHelp() { document.getElementById('helpModal').style.display = 'block'; }
-
         function formatD(d) { if(!d) return ""; const s = d.split('-'); return `${s[2]}.${s[1]}.${s[0]}`; }
         function updateDateDisplay(val) { document.getElementById('dateDisplay').innerText = formatD(val); }
         function findLastWeight(exName) { for (let entry of history) { let found = entry.moves.find(m => m.name === exName); if (found) return found.weight; } return "-"; }
@@ -277,8 +260,7 @@
             const cont = document.getElementById('mainContent'); 
             cont.innerHTML = "";
             
-            // Jos ohjelmia ei ole tai valittua ei löydy, näytetään ohjeistus
-            if (!customP || !customP[curKey]) {
+            if (Object.keys(customP).length === 0 || !curKey || !customP[curKey]) {
                 cont.innerHTML = `
                     <div class="day-card" style="text-align:center; padding:40px 20px;">
                         <span class="material-symbols-rounded" style="font-size:48px; opacity:0.3;">exercise</span>
@@ -290,7 +272,7 @@
                 return;
             }
 
-            let p = customP[curKey]; if(!p) return;
+            let p = customP[curKey];
             const card = document.createElement('div'); card.className = 'day-card';
             const today = new Date().toISOString().split('T')[0];
             card.innerHTML = `
@@ -311,6 +293,7 @@
                 </div>
                 <div id="rows"></div>`;
             cont.appendChild(card);
+            
             p.exs.forEach(ex => {
                 const lastW = findLastWeight(ex.n);
                 const row = document.createElement('div'); row.className = 'ex-row';
@@ -330,16 +313,26 @@
             });
         }
 
+        function handleReset() { if(confirm("Nollataanko sivu? Tämä tyhjentää valitut liikkeet.")) { renderMain(); } }
         function getInitialLabel(bName) { const barW = barWeights[bName] || 0; return (!bName || bName === "Ei tankoa") ? "0.0kg" : `Yht: ${barW.toFixed(1)}kg (sis. tanko)`; }
         function uTot(id, bN) { const val = parseFloat(document.getElementById('w_'+id).value) || 0; const bar = (bN && bN !== "Ei tankoa") ? (barWeights[bN] || 0) : 0; document.getElementById('t_'+id).innerText = (bar === 0) ? `${val.toFixed(1)}kg` : `Yht: ${(val + bar).toFixed(1)}kg (sis. tanko)`; }
         function changeW() { curKey = document.getElementById('workoutSelector').value; localStorage.setItem('last_v105', curKey); renderMain(); }
         function toggleTheme() { const d = document.documentElement; const isDark = d.getAttribute('data-theme') === 'dark'; d.setAttribute('data-theme', isDark ? 'light' : 'dark'); document.getElementById('themeIcon').innerText = isDark ? 'light_mode' : 'dark_mode'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-        function openEdit() { document.getElementById('editModal').style.display = 'block'; document.getElementById('editProgSelector').innerHTML = Object.keys(customP).map(k => `<option value="${k}" ${k===curKey?'selected':''}>${customP[k].name}</option>`).join('') || ''; loadEditProg(); loadBarSettings(); loadQuickMoveSettings(); }
+        
+        function openEdit() { 
+            document.getElementById('editModal').style.display = 'block'; 
+            const selector = document.getElementById('editProgSelector');
+            selector.innerHTML = Object.keys(customP).map(k => `<option value="${k}" ${k===curKey?'selected':''}>${customP[k].name}</option>`).join('') || '<option value="">Ei ohjelmia</option>'; 
+            loadEditProg(); 
+            loadBarSettings(); 
+        }
 
         function loadEditProg() {
             tempEditKey = document.getElementById('editProgSelector').value;
-            const p = customP[tempEditKey]; if(!p) return;
+            const p = customP[tempEditKey]; 
+            const cont = document.getElementById('progEditContent');
+            if(!p) { cont.innerHTML = "<p style='text-align:center; opacity:0.5;'>Luo ohjelma ylhäältä.</p>"; return; }
             let html = '';
             p.exs.forEach((e, i) => {
                 html += `
@@ -359,22 +352,35 @@
                     </div>
                 </div>`;
             });
-            document.getElementById('progEditContent').innerHTML = html;
+            cont.innerHTML = html;
         }
 
-        function loadBarSettings() { document.getElementById('barSettings').innerHTML = Object.keys(barWeights).map(name => `<div><span style="font-size:12px; font-weight:700;">${name}</span><input type="number" step="0.1" class="edit-input" id="bw_${name}" value="${barWeights[name]}"></div>`).join(''); }
+        function loadBarSettings() { 
+            // Varmista, että barWeights on olemassa
+            if(!barWeights || Object.keys(barWeights).length === 0) barWeights = BAR_DEFAULTS;
+            document.getElementById('barSettings').innerHTML = Object.keys(barWeights).map(name => `<div><span style="font-size:12px; font-weight:700;">${name}</span><input type="number" step="0.1" class="edit-input" id="bw_${name}" value="${barWeights[name]}"></div>`).join(''); 
+        }
+
         function saveBars() { Object.keys(barWeights).forEach(name => { barWeights[name] = parseFloat(document.getElementById(`bw_${name}`).value) || 0; }); localStorage.setItem('bw_v105', JSON.stringify(barWeights)); alert("Tallennettu!"); renderMain(); }
-        function loadQuickMoveSettings() { document.getElementById('quickMoveSettings').innerHTML = quickMoves.map((m, i) => `<div style="display:flex; gap:8px;"><input type="text" class="edit-input" id="qm_${i}" value="${m}"><button class="del-btn-text" onclick="removeQuickMove(${i})">×</button></div>`).join(''); }
-        function addQuickMove() { quickMoves.push(""); loadQuickMoveSettings(); }
-        function removeQuickMove(i) { quickMoves.splice(i,1); loadQuickMoveSettings(); }
-        function saveQuickMoves() { quickMoves = []; const inputs = document.querySelectorAll('[id^="qm_"]'); inputs.forEach(input => { if(input.value.trim()) quickMoves.push(input.value.trim()); }); localStorage.setItem('qm_v105', JSON.stringify(quickMoves)); alert("Tallennettu!"); }
+
+        function createNewProg() { 
+            const name = document.getElementById('newProgName').value.trim(); 
+            if(!name) return alert("Anna nimi!"); 
+            const id = 'v' + Date.now(); 
+            customP[id] = { name: name, exs: [] }; 
+            localStorage.setItem('cp_v105', JSON.stringify(customP)); 
+            document.getElementById('newProgName').value = ""; 
+            curKey = id; 
+            localStorage.setItem('last_v105', id);
+            openEdit(); 
+            renderMain(); 
+        }
 
         function syncT() { const p = customP[tempEditKey]; if(!p) return; p.exs.forEach((e, i) => { e.n = document.getElementById('en_'+i).value; e.s = document.getElementById('es_'+i).value; e.r = document.getElementById('er_'+i).value; e.b = document.getElementById('eb_'+i).value; }); }
         function addTempEx() { syncT(); customP[tempEditKey].exs.push({id:'e'+Date.now(), n:'', s:'3', r:'8-10', b:'Ei tankoa'}); loadEditProg(); }
         function removeTempEx(i) { syncT(); customP[tempEditKey].exs.splice(i,1); loadEditProg(); }
         function saveCurrentEdit() { syncT(); localStorage.setItem('cp_v105', JSON.stringify(customP)); alert("Tallennettu!"); renderMain(); }
-        function createNewProg() { const name = document.getElementById('newProgName').value.trim(); if(!name) return; const id = 'v' + Date.now(); customP[id] = { name: name, exs: [] }; localStorage.setItem('cp_v105', JSON.stringify(customP)); document.getElementById('newProgName').value = ""; curKey = id; openEdit(); renderMain(); }
-        function deleteCurrentProg() { if(Object.keys(customP).length > 1 && confirm("Poista ohjelma?")) { delete customP[tempEditKey]; curKey = Object.keys(customP)[0]; localStorage.setItem('cp_v105', JSON.stringify(customP)); openEdit(); renderMain(); } }
+        function deleteCurrentProg() { if(Object.keys(customP).length > 0 && confirm("Poista ohjelma?")) { delete customP[tempEditKey]; curKey = Object.keys(customP)[0] || ""; localStorage.setItem('cp_v105', JSON.stringify(customP)); localStorage.setItem('last_v105', curKey); openEdit(); renderMain(); } }
 
         function openHistory() {
             document.getElementById('historyModal').style.display = 'block';
@@ -398,7 +404,15 @@
             if(!entry.moves.length) return alert("Valitse liikkeet!");
             history.unshift(entry); localStorage.setItem('hist_v105', JSON.stringify(history.slice(0,50))); alert("Tallennettu!"); renderMain();
         }
-        function showQuickMenu(e, index) { const menu = document.getElementById('quickMenu'); const rect = e.currentTarget.getBoundingClientRect(); menu.style.display = 'block'; menu.style.top = (rect.bottom + window.scrollY) + 'px'; menu.style.left = rect.left + 'px'; menu.innerHTML = quickMoves.map(m => `<div onclick="selectQuickMove('${m}', ${index})">${m}</div>`).join(''); const cl = () => { menu.style.display='none'; document.removeEventListener('click', cl); }; setTimeout(() => document.addEventListener('click', cl), 10); }
+
+        function showQuickMenu(e, index) { 
+            const menu = document.getElementById('quickMenu'); 
+            const rect = e.currentTarget.getBoundingClientRect(); 
+            menu.style.display = 'block'; menu.style.top = (rect.bottom + window.scrollY) + 'px'; menu.style.left = rect.left + 'px'; 
+            menu.innerHTML = quickMoves.map(m => `<div onclick="selectQuickMove('${m}', ${index})">${m}</div>`).join(''); 
+            const cl = () => { menu.style.display='none'; document.removeEventListener('click', cl); }; 
+            setTimeout(() => document.addEventListener('click', cl), 10); 
+        }
         function selectQuickMove(name, index) { document.getElementById(`en_${index}`).value = name; document.getElementById('quickMenu').style.display = 'none'; }
 
         window.onload = renderMain;
