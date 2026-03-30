@@ -26,7 +26,6 @@
             --iron-slate: rgba(74, 85, 104, 0.15); 
             --iron-text: #4a5568;
             --select-border: rgba(226, 232, 240, 0.8);
-            /* Väriteemat */
             --bolt-bg: rgba(159, 122, 234, 0.15);
             --bolt-color: #6b46c1;
             --home-btn-bg: rgba(74, 85, 104, 0.1);
@@ -58,92 +57,49 @@
         }
         
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: var(--bg-base); color: var(--text); padding: 20px 0 140px 0; margin: 0; box-sizing: border-box; }
-        
-        .glass-btn { 
-            padding: 0 14px; border-radius: 10px; font-family: inherit; font-weight: 800; font-size: 14px; 
-            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; 
-            height: 48px; border: none; text-transform: uppercase; box-sizing: border-box; transition: opacity 0.2s;
-        }
+        .glass-btn { padding: 0 14px; border-radius: 10px; font-family: inherit; font-weight: 800; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; height: 48px; border: none; text-transform: uppercase; box-sizing: border-box; transition: opacity 0.2s; }
         .glass-btn:active { opacity: 0.7; }
-        
         .header { display: grid; grid-template-columns: 48px 1fr 48px 48px; gap: 10px; align-items: center; width: 92%; max-width: 500px; margin: 0 auto 20px auto; }
         .header h3 { text-align: center; font-size: 16px; font-weight: 900; margin: 0; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text); }
         .material-symbols-rounded { font-size: 26px; color: inherit; vertical-align: middle; }
-        
-        .icon-btn { 
-            background: var(--glass-card); border: 1px solid var(--border); border-radius: 14px; 
-            width: 48px; height: 48px; cursor: pointer; display: flex; align-items: center; 
-            justify-content: center; backdrop-filter: blur(10px); padding: 0; color: var(--text);
-            box-sizing: border-box; transition: transform 0.1s;
-        }
+        .icon-btn { background: var(--glass-card); border: 1px solid var(--border); border-radius: 14px; width: 48px; height: 48px; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px); padding: 0; color: var(--text); box-sizing: border-box; transition: transform 0.1s; }
         .icon-btn:active { transform: scale(0.92); }
-
         .btn-hist { color: var(--accent); }
         .btn-theme { color: var(--amber-icon); }
         .btn-settings { color: var(--slate-icon); }
-
-        /* ASETUKSIEN KOTINAPPI (IRON SLATE) */
         .btn-home-settings { background: var(--home-btn-bg); color: var(--home-btn-text); border: 1px solid var(--border); }
-
         .card-header-area { display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; padding-bottom: 15px; border-bottom: 1px solid var(--border); }
         .selector-label { font-size: 14px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; color: var(--text); opacity: 0.8; }
         .controls-row { display: flex; align-items: center; gap: 10px; }
-        
-        .select-wrapper { 
-            position: relative; flex: 1; display: flex; align-items: center; 
-            background: var(--cal-badge-bg); border: 1px solid var(--border);
-            border-radius: 10px; height: 38px; box-sizing: border-box;
-        }
-        .select-workout { 
-            appearance: none; -webkit-appearance: none; width: 100%; padding: 0 30px 0 12px; 
-            border: none; background: transparent; color: var(--text); font-size: 13px; 
-            font-weight: 800; text-transform: uppercase; outline: none; cursor: pointer; 
-            letter-spacing: 0.5px; height: 100%;
-        }
-        .select-wrapper::after { 
-            content: '\e5cf'; font-family: 'Material Symbols Rounded'; position: absolute; 
-            right: 8px; pointer-events: none; color: var(--text); opacity: 0.5; font-size: 20px; 
-        }
-
+        .select-wrapper { position: relative; flex: 1; display: flex; align-items: center; background: var(--cal-badge-bg); border: 1px solid var(--border); border-radius: 10px; height: 38px; box-sizing: border-box; }
+        .select-workout { appearance: none; -webkit-appearance: none; width: 100%; padding: 0 30px 0 12px; border: none; background: transparent; color: var(--text); font-size: 13px; font-weight: 800; text-transform: uppercase; outline: none; cursor: pointer; letter-spacing: 0.5px; height: 100%; }
+        .select-wrapper::after { content: '\e5cf'; font-family: 'Material Symbols Rounded'; position: absolute; right: 8px; pointer-events: none; color: var(--text); opacity: 0.5; font-size: 20px; }
         .day-card, .edit-card, .hist-item { background: var(--glass-card); backdrop-filter: blur(15px); border-radius: 24px; margin: 0 auto 15px auto; width: 92%; max-width: 500px; padding: 25px; border: 1px solid var(--border); box-sizing: border-box; }
         .badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 800; background: var(--badge-bg); color: var(--badge-text); }
         .badge-weight { background: var(--save-green-bg); color: var(--save-green-text); }
         .badge-iron { background: var(--iron-slate); color: var(--iron-text); margin-top: 4px; font-size: 12px; font-weight: 800; }
-        
         .cal-badge { background: var(--cal-badge-bg); color: var(--text); padding: 0 12px; font-size: 13px; position: relative; border: 1px solid var(--border); border-radius: 10px; height: 38px; display: flex; align-items: center; gap: 6px; box-sizing: border-box; }
         .hidden-date { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 5; }
-        
         .ex-row { display: flex; flex-direction: column; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
         .ex-row-middle { display: flex; align-items: stretch; justify-content: space-between; gap: 8px; }
         .input-group { display: flex; flex-direction: column; gap: 4px; align-items: center; justify-content: flex-end; }
         .input-label { font-size: 9px; font-weight: 900; text-transform: uppercase; opacity: 0.6; color: var(--text); }
         .input-wrapper { position: relative; width: 75px; height: 38px; }
         .input-wrapper span.unit { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 12px; font-weight: 800; opacity: 0.5; color: var(--text); }
-        
         .c-w-input, .c-s-select { width: 75px; height: 38px; border-radius: 10px; border: 2px solid var(--chk-border); text-align: center; background: var(--input-bg); font-size: 15px; font-weight: 800; color: var(--text); outline: none; appearance: none; box-sizing: border-box; }
         .styled-checkbox { width: 38px; height: 38px; border-radius: 10px; border: 2px solid var(--chk-border); appearance: none; -webkit-appearance: none; background: var(--input-bg); position: relative; cursor: pointer; margin: 0; box-sizing: border-box; }
         .styled-checkbox:checked { background: var(--accent); border-color: var(--accent); }
         .styled-checkbox:checked::after { content: '✓'; position: absolute; color: white; font-size: 26px; left: 7px; top: 0px; font-weight: 900; }
-        
         .nav { position: fixed; bottom: 0; left: 0; right: 0; padding: 20px; background: rgba(255,255,255,0.3); backdrop-filter: blur(15px); border-top: 1px solid var(--border); z-index: 1000; }
-        
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-base); z-index: 9999; overflow-y: auto; padding: 20px 0; }
         .edit-input { width: 100%; padding: 8px; border-radius: 10px; border: 1px solid var(--border); background: var(--input-bg); color: var(--text); height: 44px; box-sizing: border-box; font-weight: 500; font-size: 15px; }
-        
         .edit-ex-block { padding: 15px 0; border-bottom: 1px solid var(--border); }
         .edit-row-top { display: flex; gap: 8px; margin-bottom: 10px; align-items: center; }
         .edit-row-bottom { display: grid; grid-template-columns: 1.8fr 1fr 1.2fr; gap: 8px; align-items: center; }
-        
         .del-btn-text { background:none; border:none; color:#f56565; font-size: 24px; cursor:pointer; padding:0; line-height:1; }
         .trash-btn { width: auto; height: 44px; aspect-ratio: 1/1; background: rgba(245, 101, 101, 0.2); border: none; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; box-sizing: border-box; }
-        
-        .quick-select-btn { 
-            width: 42px; height: 42px; border: 1px solid var(--border); border-radius: 12px; 
-            display: flex; align-items: center; justify-content: center; cursor: pointer; 
-            flex-shrink: 0; background: var(--bolt-bg); color: var(--bolt-color); transition: transform 0.1s;
-        }
+        .quick-select-btn { width: 42px; height: 42px; border: 1px solid var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; background: var(--bolt-bg); color: var(--bolt-color); transition: transform 0.1s; }
         .quick-select-btn:active { transform: scale(0.9); }
-
         .quick-menu { position: absolute; background: var(--bg-base); border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); z-index: 10000; max-height: 200px; overflow-y: auto; width: 200px; display: none; }
         .quick-menu div { padding: 12px; border-bottom: 1px solid var(--border); cursor: pointer; font-size: 14px; font-weight: 500; }
     </style>
@@ -161,7 +117,7 @@
 
     <div class="nav">
         <div style="display:flex; gap:12px; max-width:500px; margin:0 auto;">
-            <button class="glass-btn" style="flex: 1; background: rgba(245, 101, 101, 0.2); color: #c53030;" onclick="resetApp()">NOLLAA</button>
+            <button class="glass-btn" style="flex: 1; background: rgba(245, 101, 101, 0.2); color: #c53030;" onclick="resetToInitial()">NOLLAA</button>
             <button class="glass-btn" style="flex: 2; background: var(--save-green-bg); color: var(--save-green-text);" onclick="saveData()">
                 <span class="material-symbols-rounded">save</span>TALLENNA
             </button>
@@ -179,109 +135,66 @@
         </div>
 
         <div class="edit-card">
-            <h4 style="margin-top:0;">Luo uusi ohjelma</h4>
-            <div style="margin-bottom:25px; padding-bottom:10px; border-bottom:1px solid var(--border);">
-                <div style="display:flex; gap:10px; margin-bottom:15px;">
-                    <input type="text" id="newProgName" class="edit-input" style="height: 48px;" placeholder="Ohjelman nimi...">
-                    <button class="glass-btn" style="background:var(--badge-bg); color:var(--badge-text); flex-shrink: 0;" onclick="createNewProg()">
-                        <span class="material-symbols-rounded">add_circle</span>LISÄÄ
-                    </button>
-                </div>
-                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
-                    <button class="glass-btn" style="background: var(--iron-slate); color: var(--iron-text);" onclick="exportData()">
-                        <span class="material-symbols-rounded">download</span>VIE OHJELMA
-                    </button>
-                    <label class="glass-btn" style="background: var(--iron-slate); color: var(--iron-text); cursor: pointer;">
-                        <span class="material-symbols-rounded">upload</span>TUO OHJELMA
-                        <input type="file" style="display:none" onchange="importData(event)">
-                    </label>
-                </div>
+            <h4>Luo uusi ohjelma</h4>
+            <div style="display:flex; gap:10px; margin-bottom:15px;">
+                <input type="text" id="newProgName" class="edit-input" placeholder="Ohjelman nimi...">
+                <button class="glass-btn" style="background:var(--badge-bg); color:var(--badge-text);" onclick="createNewProg()">LISÄÄ</button>
             </div>
-
+            
             <h4>Muokkaa ohjelmaa</h4>
-            <div style="display:flex; gap:10px; margin-bottom:15px; align-items:center;">
+            <div style="display:flex; gap:10px; margin-bottom:15px;">
                 <select id="editProgSelector" class="edit-input" onchange="loadEditProg()"></select>
-                <button class="trash-btn" onclick="deleteCurrentProg()">
-                    <span class="material-symbols-rounded" style="color:#f56565;">delete</span>
-                </button>
+                <button class="trash-btn" onclick="deleteCurrentProg()"><span class="material-symbols-rounded" style="color:#f56565;">delete</span></button>
             </div>
             <div id="progEditContent"></div>
             <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:20px;">
-                <button class="glass-btn" style="background:var(--badge-bg); color:var(--badge-text);" onclick="addTempEx()">
-                    <span class="material-symbols-rounded">add_circle</span>LISÄÄ LIIKE
-                </button>
-                <button class="glass-btn" style="background:var(--save-green-bg); color:var(--save-green-text);" onclick="saveCurrentEdit()">
-                    <span class="material-symbols-rounded">save</span>TALLENNA
-                </button>
+                <button class="glass-btn" style="background:var(--badge-bg); color:var(--badge-text);" onclick="addTempEx()">LISÄÄ LIIKE</button>
+                <button class="glass-btn" style="background:var(--save-green-bg); color:var(--save-green-text);" onclick="saveCurrentEdit()">TALLENNA</button>
             </div>
         </div>
 
         <div class="edit-card">
             <h4>Tankojen painot (kg)</h4>
             <div id="barSettings" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;"></div>
-            <button class="glass-btn" style="width:100%; margin-top:15px; background:var(--save-green-bg); color:var(--save-green-text);" onclick="saveBars()">
-                <span class="material-symbols-rounded">save</span>TALLENNA
-            </button>
+            <button class="glass-btn" style="width:100%; margin-top:15px; background:var(--save-green-bg); color:var(--save-green-text);" onclick="saveBars()">TALLENNA PAINOT</button>
         </div>
 
         <div class="edit-card">
             <h4>Pikavalinta liikkeet</h4>
             <div id="quickMoveSettings" style="display:flex; flex-direction:column; gap:8px;"></div>
-            <button class="glass-btn" style="width:100%; margin-top:15px; background:var(--badge-bg); color:var(--badge-text);" onclick="addQuickMove()">
-                <span class="material-symbols-rounded">add_circle</span>LISÄÄ PIKAVALINTA
-            </button>
-            <button class="glass-btn" style="width:100%; margin-top:10px; background:var(--save-green-bg); color:var(--save-green-text);" onclick="saveQuickMoves()">
-                <span class="material-symbols-rounded">save</span>TALLENNA
-            </button>
+            <button class="glass-btn" style="width:100%; margin-top:15px; background:var(--badge-bg); color:var(--badge-text);" onclick="addQuickMove()">LISÄÄ RIVI</button>
+            <button class="glass-btn" style="width:100%; margin-top:10px; background:var(--save-green-bg); color:var(--save-green-text);" onclick="saveQuickMoves()">TALLENNA PIKAVALINNAT</button>
         </div>
-
+        
         <button class="glass-btn" style="margin: 30px auto; width: 140px; background: var(--iron-slate); color: var(--iron-text); display: block;" onclick="closeModal('editModal')">VALMIS</button>
     </div>
 
-    <div id="helpModal" class="modal">
-        <div style="display: grid; grid-template-columns: 48px 1fr 48px; align-items: center; width: 92%; max-width: 500px; margin: 0 auto 20px auto;">
-            <button class="icon-btn btn-home-settings" onclick="closeModal('helpModal')"><span class="material-symbols-rounded">arrow_back</span></button>
-            <h2 style="text-align: center; margin: 0; font-weight: 900; letter-spacing: 1px; text-transform: uppercase;">Käyttöohje</h2>
-            <div style="width:48px;"></div>
-        </div>
-        <div class="edit-card" style="font-size: 14px; line-height: 1.6;">
-            <p><b>1. Ohjelmat:</b> Voit luoda useita eri treeniohjelmia. Valitse muokattava ohjelma listasta tai luo uusi "Lisää"-painikkeella.</p>
-            <p><b>2. Pikavalinnat (⚡):</b> Ohjelman muokkauksessa näkyvä purppura salama avaa pikavalinnan. Voit lisätä omia suosikkiliikkeitäsi asetusten alareunasta.</p>
-            <p><b>3. Tankojen painot:</b> Määritä tankojen painot kerran. Kun valitset liikkeelle tangon, sovellus laskee kokonaispainon puolestasi päänäkymässä.</p>
-            <p><b>4. Historia:</b> Tallentamasi treenit siirtyvät historiaan, josta näet myös viimeksi käytetyt painot kunkin liikkeen kohdalla.</p>
-            <p><b>5. Varmuuskopiointi:</b> Käytä "Vie ohjelma" -toimintoa tallentaaksesi asetuksesi tiedostoon. Voit palauttaa ne milloin vain "Tuo ohjelma" -napilla.</p>
-        </div>
-        <button class="glass-btn" style="margin: 20px auto; width: 140px; background: var(--iron-slate); color: var(--iron-text); display: block;" onclick="closeModal('helpModal')">SULJE</button>
-    </div>
-
     <script>
-        // PAKOTETUT OLETUKSET
+        // --- 1. MÄÄRITTELYT JA OLETUKSET (AINA LÄSNÄ) ---
         const BAR_DEFAULTS = { "Suora tanko": 9.9, "Mutka tanko": 6.8, "Hex tanko": 17.0 };
-        const MOVE_DEFAULTS = ["Penkkipunnerrus", "Kyykky", "Maastaveto", "Pystypunnerrus tangolla", "Kulmasoutu tangolla"];
-        const DEFAULT_PROG = { "v_default": { name: "Perusohjelma", exs: [{ id: "e1", n: "Pystypunnerrus", s: "3", r: "8-10", b: "Suora tanko" }] } };
+        const MOVE_DEFAULTS = ["Penkkipunnerrus", "Kyykky", "Maastaveto", "Pystypunnerrus tangolla"];
+        const INITIAL_PROG = { "v_default": { name: "Oletusohjelma", exs: [{ id: "e1", n: "Pystypunnerrus", s: "3", r: "8-10", b: "Suora tanko" }] } };
         const SER_OPTS = [1, 2, 3, 4, 5, 6], REP_OPTS = ["1-5", "6-8", "8-10", "10-12", "12-15", "15-20"];
-        
-        let barWeights = JSON.parse(localStorage.getItem('bw_v105')) || BAR_DEFAULTS;
-        let quickMoves = JSON.parse(localStorage.getItem('qm_v105')) || MOVE_DEFAULTS;
-        let customP = JSON.parse(localStorage.getItem('cp_v105'));
-        
-        // JOS OHJELMIA EI OLE (TAI MUISTI TYHJÄ), LUODAAN OLETUS
-        if (!customP || Object.keys(customP).length === 0) {
-            customP = JSON.parse(JSON.stringify(DEFAULT_PROG));
-        }
 
+        // --- 2. MUUTTUJIEN ALUSTUS ---
+        let barWeights = JSON.parse(localStorage.getItem('bw_v105')) || {...BAR_DEFAULTS};
+        let quickMoves = JSON.parse(localStorage.getItem('qm_v105')) || [...MOVE_DEFAULTS];
+        let customP = JSON.parse(localStorage.getItem('cp_v105')) || {...INITIAL_PROG};
         let history = JSON.parse(localStorage.getItem('hist_v105') || "[]");
-        let curKey = localStorage.getItem('last_v105') || Object.keys(customP)[0];
-        let tempEditKey = "";
+        
+        // Varmistetaan että curKey on olemassa ja viittaa johonkin ohjelmaan
+        let curKey = localStorage.getItem('last_v105');
+        if (!curKey || !customP[curKey]) {
+            curKey = Object.keys(customP)[0];
+        }
+        let tempEditKey = curKey;
 
-        function openHelp() { document.getElementById('helpModal').style.display = 'block'; }
-        function formatD(d) { if(!d) return ""; const s = d.split('-'); return `${s[2]}.${s[1]}.${s[0]}`; }
-        function updateDateDisplay(val) { document.getElementById('dateDisplay').innerText = formatD(val); }
-        function findLastWeight(exName) { for (let entry of history) { let found = entry.moves.find(m => m.name === exName); if (found) return found.weight; } return "-"; }
-
+        // --- 3. TOIMINNALLISUUDET ---
+        
         function renderMain() {
-            const cont = document.getElementById('mainContent'); cont.innerHTML = "";
-            let p = customP[curKey]; 
+            const cont = document.getElementById('mainContent'); 
+            cont.innerHTML = "";
+            let p = customP[curKey];
             if(!p) { curKey = Object.keys(customP)[0]; p = customP[curKey]; }
             
             const card = document.createElement('div'); card.className = 'day-card';
@@ -308,44 +221,88 @@
                 const lastW = findLastWeight(ex.n);
                 const row = document.createElement('div'); row.className = 'ex-row';
                 row.innerHTML = `
-                <div class="ex-row-top"><b style="font-size:17px; color:var(--text);">${ex.n}</b></div>
+                <div class="ex-row-top"><b style="font-size:17px;">${ex.n}</b></div>
                 <div class="ex-row-middle">
                     <div class="input-group"><span class="input-label">Paino</span><div class="input-wrapper"><input type="number" step="0.5" class="c-w-input" id="w_${ex.id}" oninput="uTot('${ex.id}','${ex.b}')" placeholder="0"><span class="unit">kg</span></div></div>
                     <div class="input-group"><span class="input-label">Sarjat</span><select class="c-s-select" id="s_${ex.id}">${SER_OPTS.map(v=>`<option value="${v}" ${ex.s==v?'selected':''}>${v}</option>`).join('')}</select></div>
                     <div class="input-group"><span class="input-label">Toistot</span><select class="c-s-select" id="r_${ex.id}">${REP_OPTS.map(v=>`<option value="${v}" ${ex.r==v?'selected':''}>${v}</option>`).join('')}</select></div>
                     <div class="input-group"><span class="input-label">Tehty</span><input type="checkbox" class="styled-checkbox" id="c_${ex.id}"></div>
                 </div>
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:6px;">
+                <div style="display:flex; gap:8px; margin-top:6px;">
                     <span class="badge badge-weight" id="t_${ex.id}">${getInitialLabel(ex.b)}</span>
-                    <span class="badge" style="background:var(--badge-bg); color:var(--badge-text);">Viimeksi: ${lastW}kg</span>
+                    <span class="badge">Viimeksi: ${lastW}kg</span>
                 </div>`;
                 card.querySelector('#rows').appendChild(row);
             });
         }
 
-        // PAKOTETTU NOLLAUS (PALAUTTAA AINA OLETUKSET)
-        function resetApp() {
-            if(confirm("Haluatko nollata valinnat? Historia ja ohjelmat säilyvät, mutta päänäkymä tyhjenee.")) {
+        function createNewProg() {
+            const nameInput = document.getElementById('newProgName');
+            const name = nameInput.value.trim();
+            if(!name) { alert("Anna ohjelmalle nimi!"); return; }
+            
+            const id = 'v' + Date.now();
+            customP[id] = { name: name, exs: [] };
+            
+            localStorage.setItem('cp_v105', JSON.stringify(customP));
+            nameInput.value = "";
+            
+            // Päivitetään valitsimet ja asetetaan uusi ohjelma aktiiviseksi
+            curKey = id;
+            localStorage.setItem('last_v105', curKey);
+            
+            openEdit(); // Päivittää asetussivun näkymän
+            renderMain(); // Päivittää etusivun
+        }
+
+        function loadBarSettings() {
+            const cont = document.getElementById('barSettings');
+            // Varmistetaan, että default-tangot ovat mukana jos ne puuttuvat
+            Object.keys(BAR_DEFAULTS).forEach(key => {
+                if(barWeights[key] === undefined) barWeights[key] = BAR_DEFAULTS[key];
+            });
+            cont.innerHTML = Object.keys(barWeights).map(name => `
+                <div>
+                    <span style="font-size:11px; font-weight:800; text-transform:uppercase; opacity:0.7;">${name}</span>
+                    <input type="number" step="0.1" class="edit-input" id="bw_${name}" value="${barWeights[name]}">
+                </div>
+            `).join('');
+        }
+
+        function resetToInitial() {
+            if(confirm("Haluatko varmasti palauttaa oletusasetukset? Tämä ei poista historiaasi.")) {
+                barWeights = {...BAR_DEFAULTS};
+                customP = {...INITIAL_PROG};
+                curKey = Object.keys(customP)[0];
+                localStorage.setItem('bw_v105', JSON.stringify(barWeights));
+                localStorage.setItem('cp_v105', JSON.stringify(customP));
+                localStorage.setItem('last_v105', curKey);
                 renderMain();
+                alert("Oletukset palautettu.");
             }
         }
 
-        function getInitialLabel(bName) { const barW = barWeights[bName] || 0; return (!bName || bName === "Ei tankoa") ? "0.0kg" : `Yht: ${barW.toFixed(1)}kg (sis. tanko)`; }
-        function uTot(id, bN) { const val = parseFloat(document.getElementById('w_'+id).value) || 0; const bar = (bN && bN !== "Ei tankoa") ? (barWeights[bN] || 0) : 0; document.getElementById('t_'+id).innerText = (bar === 0) ? `${val.toFixed(1)}kg` : `Yht: ${(val + bar).toFixed(1)}kg (sis. tanko)`; }
+        // --- APUFUNKTIOT (SÄILYTETTY ALKUPERÄISINÄ) ---
+        function formatD(d) { if(!d) return ""; const s = d.split('-'); return `${s[2]}.${s[1]}.${s[0]}`; }
+        function updateDateDisplay(val) { document.getElementById('dateDisplay').innerText = formatD(val); }
+        function findLastWeight(exName) { for (let entry of history) { let found = entry.moves.find(m => m.name === exName); if (found) return found.weight; } return "-"; }
+        function getInitialLabel(bName) { const barW = barWeights[bName] || 0; return (!bName || bName === "Ei tankoa") ? "0.0kg" : `Yht: ${barW.toFixed(1)}kg`; }
+        function uTot(id, bN) { const val = parseFloat(document.getElementById('w_'+id).value) || 0; const bar = (bN && bN !== "Ei tankoa") ? (barWeights[bN] || 0) : 0; document.getElementById('t_'+id).innerText = `Yht: ${(val + bar).toFixed(1)}kg`; }
         function changeW() { curKey = document.getElementById('workoutSelector').value; localStorage.setItem('last_v105', curKey); renderMain(); }
         function toggleTheme() { const d = document.documentElement; const isDark = d.getAttribute('data-theme') === 'dark'; d.setAttribute('data-theme', isDark ? 'light' : 'dark'); document.getElementById('themeIcon').innerText = isDark ? 'light_mode' : 'dark_mode'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
         
         function openEdit() { 
             document.getElementById('editModal').style.display = 'block'; 
-            document.getElementById('editProgSelector').innerHTML = Object.keys(customP).map(k => `<option value="${k}" ${k===curKey?'selected':''}>${customP[k].name}</option>`).join(''); 
+            const sel = document.getElementById('editProgSelector');
+            sel.innerHTML = Object.keys(customP).map(k => `<option value="${k}" ${k===curKey?'selected':''}>${customP[k].name}</option>`).join('');
             loadEditProg(); 
             loadBarSettings(); 
             loadQuickMoveSettings(); 
         }
 
         function loadEditProg() {
-            tempEditKey = document.getElementById('editProgSelector').value || Object.keys(customP)[0];
+            tempEditKey = document.getElementById('editProgSelector').value || curKey;
             const p = customP[tempEditKey]; if(!p) return;
             let html = '';
             p.exs.forEach((e, i) => {
@@ -353,82 +310,52 @@
                 <div class="edit-ex-block">
                     <div class="edit-row-top">
                         <div class="quick-select-btn" onclick="showQuickMenu(event, ${i})"><span class="material-symbols-rounded">bolt</span></div>
-                        <input type="text" class="edit-input" id="en_${i}" value="${e.n}" placeholder="Liikkeen nimi">
+                        <input type="text" class="edit-input" id="en_${i}" value="${e.n}">
                         <button class="del-btn-text" onclick="removeTempEx(${i})">×</button>
                     </div>
                     <div class="edit-row-bottom">
-                        <select class="edit-input" id="eb_${i}">
-                            ${Object.keys(barWeights).map(bn => `<option value="${bn}" ${e.b===bn?'selected':''}>${bn}</option>`).join('')}
-                            <option value="Ei tankoa" ${(!e.b || e.b==='Ei tankoa')?'selected':''}>Ei tankoa</option>
-                        </select>
-                        <select class="edit-input" id="es_${i}">${SER_OPTS.map(v=>`<option value="${v}" ${e.s==v?'selected':''}>${v} sarjaa</option>`).join('')}</select>
-                        <select class="edit-input" id="er_${i}">${REP_OPTS.map(v=>`<option value="${v}" ${e.r==v?'selected':''}>${v} toistoa</option>`).join('')}</select>
+                        <select class="edit-input" id="eb_${i}">${Object.keys(barWeights).map(bn => `<option value="${bn}" ${e.b===bn?'selected':''}>${bn}</option>`).join('')}<option value="Ei tankoa">Ei tankoa</option></select>
+                        <select class="edit-input" id="es_${i}">${SER_OPTS.map(v=>`<option value="${v}" ${e.s==v?'selected':''}>${v} s</option>`).join('')}</select>
+                        <select class="edit-input" id="er_${i}">${REP_OPTS.map(v=>`<option value="${v}" ${e.r==v?'selected':''}>${v} r</option>`).join('')}</select>
                     </div>
                 </div>`;
             });
             document.getElementById('progEditContent').innerHTML = html;
         }
 
-        function loadBarSettings() { 
-            // Varmistetaan että kaikki default-tangot löytyvät listasta
-            Object.keys(BAR_DEFAULTS).forEach(key => { if(!barWeights[key]) barWeights[key] = BAR_DEFAULTS[key]; });
-            document.getElementById('barSettings').innerHTML = Object.keys(barWeights).map(name => `<div><span style="font-size:12px; font-weight:700;">${name}</span><input type="number" step="0.1" class="edit-input" id="bw_${name}" value="${barWeights[name]}"></div>`).join(''); 
+        function saveBars() { 
+            Object.keys(barWeights).forEach(name => { 
+                const input = document.getElementById(`bw_${name}`);
+                if(input) barWeights[name] = parseFloat(input.value) || 0; 
+            }); 
+            localStorage.setItem('bw_v105', JSON.stringify(barWeights)); 
+            alert("Painot tallennettu!"); 
+            renderMain(); 
         }
-        function saveBars() { Object.keys(barWeights).forEach(name => { barWeights[name] = parseFloat(document.getElementById(`bw_${name}`).value) || 0; }); localStorage.setItem('bw_v105', JSON.stringify(barWeights)); alert("Tallennettu!"); renderMain(); }
-        
+
         function loadQuickMoveSettings() { document.getElementById('quickMoveSettings').innerHTML = quickMoves.map((m, i) => `<div style="display:flex; gap:8px;"><input type="text" class="edit-input" id="qm_${i}" value="${m}"><button class="del-btn-text" onclick="removeQuickMove(${i})">×</button></div>`).join(''); }
         function addQuickMove() { quickMoves.push(""); loadQuickMoveSettings(); }
         function removeQuickMove(i) { quickMoves.splice(i,1); loadQuickMoveSettings(); }
-        function saveQuickMoves() { quickMoves = []; const inputs = document.querySelectorAll('[id^="qm_"]'); inputs.forEach(input => { if(input.value.trim()) quickMoves.push(input.value.trim()); }); localStorage.setItem('qm_v105', JSON.stringify(quickMoves)); alert("Tallennettu!"); }
+        function saveQuickMoves() { quickMoves = []; document.querySelectorAll('[id^="qm_"]').forEach(input => { if(input.value.trim()) quickMoves.push(input.value.trim()); }); localStorage.setItem('qm_v105', JSON.stringify(quickMoves)); alert("Tallennettu!"); }
 
         function syncT() { const p = customP[tempEditKey]; if(!p) return; p.exs.forEach((e, i) => { e.n = document.getElementById('en_'+i).value; e.s = document.getElementById('es_'+i).value; e.r = document.getElementById('er_'+i).value; e.b = document.getElementById('eb_'+i).value; }); }
         function addTempEx() { syncT(); customP[tempEditKey].exs.push({id:'e'+Date.now(), n:'', s:'3', r:'8-10', b:'Ei tankoa'}); loadEditProg(); }
         function removeTempEx(i) { syncT(); customP[tempEditKey].exs.splice(i,1); loadEditProg(); }
         function saveCurrentEdit() { syncT(); localStorage.setItem('cp_v105', JSON.stringify(customP)); alert("Tallennettu!"); renderMain(); }
-        
-        function createNewProg() { 
-            const name = document.getElementById('newProgName').value.trim(); 
-            if(!name) return; 
-            const id = 'v' + Date.now(); 
-            customP[id] = { name: name, exs: [] }; 
-            localStorage.setItem('cp_v105', JSON.stringify(customP)); 
-            document.getElementById('newProgName').value = ""; 
-            curKey = id; 
-            openEdit(); 
-            renderMain(); 
-        }
-
-        function deleteCurrentProg() { 
-            if(Object.keys(customP).length > 1) {
-                if(confirm("Poista ohjelma?")) {
-                    delete customP[tempEditKey]; 
-                    curKey = Object.keys(customP)[0]; 
-                    localStorage.setItem('cp_v105', JSON.stringify(customP)); 
-                    openEdit(); 
-                    renderMain(); 
-                }
-            } else {
-                alert("Viimeistä ohjelmaa ei voi poistaa.");
-            }
-        }
+        function deleteCurrentProg() { if(Object.keys(customP).length > 1 && confirm("Poista ohjelma?")) { delete customP[tempEditKey]; curKey = Object.keys(customP)[0]; localStorage.setItem('cp_v105', JSON.stringify(customP)); openEdit(); renderMain(); } }
 
         function openHistory() {
             document.getElementById('historyModal').style.display = 'block';
-            document.getElementById('historyContent').innerHTML = `<h2 style="text-align:center; font-weight:900;">Historia</h2>` + history.map((e, idx) => `<div class="hist-item"><div style="display:flex; justify-content:space-between; margin-bottom:10px; align-items:center;"><b>${e.date}</b><button class="del-btn-text" onclick="deleteHist(${idx})">×</button></div>${e.moves.map(m => `<div style="display:flex; justify-content:space-between; font-size:14px; border-top:1px solid var(--border); padding:12px 0;"><span><b>${m.name}</b><br><span class="badge badge-iron">${m.vol || ''}</span></span><span class="badge" style="align-self: flex-start; margin-top:2px;">${m.weight}kg</span></div>`).join('')}</div>`).join('') || '<p style="text-align:center;">Ei historiaa.</p>';
+            document.getElementById('historyContent').innerHTML = `<h2 style="text-align:center;">Historia</h2>` + history.map((e, idx) => `<div class="hist-item"><b>${e.date}</b><button class="del-btn-text" onclick="deleteHist(${idx})">×</button>${e.moves.map(m => `<div>${m.name} ${m.weight}kg (${m.vol})</div>`).join('')}</div>`).join('') || '<p>Ei historiaa.</p>';
         }
-        function deleteHist(idx) { if(confirm("Poista historiamerkintä?")) { history.splice(idx,1); localStorage.setItem('hist_v105', JSON.stringify(history)); openHistory(); } }
-
-        function exportData() { const blob = new Blob([JSON.stringify({programs:customP, bars:barWeights, history:history, quickMoves:quickMoves})], {type:'application/json'}); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'treeniloki_backup.json'; a.click(); }
-        function importData(e) { const reader = new FileReader(); reader.onload = (ev) => { const d = JSON.parse(ev.target.result); customP=d.programs; barWeights=d.bars; history=d.history; quickMoves=d.quickMoves||MOVE_DEFAULTS; localStorage.setItem('cp_v105', JSON.stringify(customP)); localStorage.setItem('bw_v105', JSON.stringify(barWeights)); localStorage.setItem('hist_v105', JSON.stringify(history)); localStorage.setItem('qm_v105', JSON.stringify(quickMoves)); location.reload(); }; reader.readAsText(e.target.files[0]); }
-
+        function deleteHist(idx) { if(confirm("Poista?")) { history.splice(idx,1); localStorage.setItem('hist_v105', JSON.stringify(history)); openHistory(); } }
         function saveData() { 
             const dVal = document.getElementById('workoutDate').value; 
             let entry = { date: formatD(dVal), moves: [] }; 
             customP[curKey].exs.forEach(ex => { 
-                const chk = document.getElementById('c_'+ex.id);
-                if(chk && chk.checked) {
+                if(document.getElementById('c_'+ex.id).checked) {
                     const txt = document.getElementById('t_'+ex.id).innerText;
-                    const w = txt.includes('Yht:') ? txt.split(' ')[1].replace('kg','') : txt.replace('kg','');
+                    const w = txt.split(' ')[1].replace('kg','');
                     entry.moves.push({ name: ex.n, weight: w, vol: `${ex.s}x${ex.r}` }); 
                 }
             });
