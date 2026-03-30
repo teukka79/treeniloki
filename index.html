@@ -274,7 +274,22 @@
         function findLastWeight(exName) { for (let entry of history) { let found = entry.moves.find(m => m.name === exName); if (found) return found.weight; } return "-"; }
 
         function renderMain() {
-            const cont = document.getElementById('mainContent'); cont.innerHTML = "";
+            const cont = document.getElementById('mainContent'); 
+            cont.innerHTML = "";
+            
+            // Jos ohjelmia ei ole tai valittua ei löydy, näytetään ohjeistus
+            if (!customP || !customP[curKey]) {
+                cont.innerHTML = `
+                    <div class="day-card" style="text-align:center; padding:40px 20px;">
+                        <span class="material-symbols-rounded" style="font-size:48px; opacity:0.3;">exercise</span>
+                        <p style="opacity:0.6; margin-top:15px;">Ei aktiivista ohjelmaa.<br>Luo uusi ohjelma asetuksista.</p>
+                        <button class="glass-btn" style="margin:20px auto; background:var(--badge-bg); color:var(--badge-text);" onclick="openEdit()">
+                            AVAA ASETUKSET
+                        </button>
+                    </div>`;
+                return;
+            }
+
             let p = customP[curKey]; if(!p) return;
             const card = document.createElement('div'); card.className = 'day-card';
             const today = new Date().toISOString().split('T')[0];
