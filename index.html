@@ -259,8 +259,13 @@
         const MOVE_DEFAULTS = ["Penkkipunnerrus", "Kyykky", "Maastaveto", "Pystypunnerrus tangolla", "Kulmasoutu tangolla"];
         const SER_OPTS = [1, 2, 3, 4, 5, 6], REP_OPTS = ["1-5", "6-8", "8-10", "10-12", "12-15", "15-20"];
         
+        // KORJAUS 1: Tankojen painot ja pikavalinnat pakotetaan oletuksiksi, jos niitä ei ole
         let barWeights = JSON.parse(localStorage.getItem('bw_v105')) || BAR_DEFAULTS;
+        if(Object.keys(barWeights).length === 0) barWeights = BAR_DEFAULTS;
+        
         let quickMoves = JSON.parse(localStorage.getItem('qm_v105')) || MOVE_DEFAULTS;
+        if(quickMoves.length === 0) quickMoves = MOVE_DEFAULTS;
+
         let customP = JSON.parse(localStorage.getItem('cp_v105')) || {};
         let history = JSON.parse(localStorage.getItem('hist_v105') || "[]");
         let curKey = localStorage.getItem('last_v105') || (Object.keys(customP).length > 0 ? Object.keys(customP)[0] : "");
@@ -276,16 +281,9 @@
         function renderMain() {
             const cont = document.getElementById('mainContent'); cont.innerHTML = "";
             
-            // KORJAUS: Jos ohjelmia ei ole, näytetään tyhjä tila ja vinkki
-            if (Object.keys(customP).length === 0 || !curKey || !customP[curKey]) {
-                cont.innerHTML = `
-                    <div class="day-card" style="text-align:center; padding:40px 20px;">
-                        <span class="material-symbols-rounded" style="font-size:48px; opacity:0.3;">exercise</span>
-                        <p style="opacity:0.6; margin-top:15px;">Ei aktiivista ohjelmaa.<br>Luo uusi ohjelma asetuksista.</p>
-                        <button class="glass-btn" style="margin:20px auto; background:var(--badge-bg); color:var(--badge-text);" onclick="openEdit()">
-                            AVAA ASETUKSET
-                        </button>
-                    </div>`;
+            // Tarkistus jos ohjelmia ei ole
+            if (!curKey || !customP[curKey]) {
+                cont.innerHTML = '<div class="day-card" style="text-align:center;"><p>Ei aktiivista ohjelmaa. Luo ohjelma asetuksista.</p></div>';
                 return;
             }
 
@@ -335,7 +333,6 @@
         function toggleTheme() { const d = document.documentElement; const isDark = d.getAttribute('data-theme') === 'dark'; d.setAttribute('data-theme', isDark ? 'light' : 'dark'); document.getElementById('themeIcon').innerText = isDark ? 'light_mode' : 'dark_mode'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
         
-        // KORJAUS: openEdit lataa nyt datan vaikka muisti olisi tyhjä
         function openEdit() { 
             document.getElementById('editModal').style.display = 'block'; 
             document.getElementById('editProgSelector').innerHTML = Object.keys(customP).map(k => `<option value="${k}" ${k===curKey?'selected':''}>${customP[k].name}</option>`).join('') || ''; 
@@ -369,12 +366,7 @@
             document.getElementById('progEditContent').innerHTML = html;
         }
 
-        // KORJAUS: loadBarSettings varmistaa oletukset
-        function loadBarSettings() { 
-            if(!barWeights || Object.keys(barWeights).length === 0) barWeights = BAR_DEFAULTS;
-            document.getElementById('barSettings').innerHTML = Object.keys(barWeights).map(name => `<div><span style="font-size:12px; font-weight:700;">${name}</span><input type="number" step="0.1" class="edit-input" id="bw_${name}" value="${barWeights[name]}"></div>`).join(''); 
-        }
-
+        function loadBarSettings() { document.getElementById('barSettings').innerHTML = Object.keys(barWeights).map(name => `<div><span style="font-size:12px; font-weight:700;">${name}</span><input type="number" step="0.1" class="edit-input" id="bw_${name}" value="${barWeights[name]}"></div>`).join(''); }
         function saveBars() { Object.keys(barWeights).forEach(name => { barWeights[name] = parseFloat(document.getElementById(`bw_${name}`).value) || 0; }); localStorage.setItem('bw_v105', JSON.stringify(barWeights)); alert("Tallennettu!"); renderMain(); }
         function loadQuickMoveSettings() { document.getElementById('quickMoveSettings').innerHTML = quickMoves.map((m, i) => `<div style="display:flex; gap:8px;"><input type="text" class="edit-input" id="qm_${i}" value="${m}"><button class="del-btn-text" onclick="removeQuickMove(${i})">×</button></div>`).join(''); }
         function addQuickMove() { quickMoves.push(""); loadQuickMoveSettings(); }
@@ -385,8 +377,8 @@
         function addTempEx() { syncT(); if(customP[tempEditKey]) { customP[tempEditKey].exs.push({id:'e'+Date.now(), n:'', s:'3', r:'8-10', b:'Ei tankoa'}); loadEditProg(); } }
         function removeTempEx(i) { syncT(); customP[tempEditKey].exs.splice(i,1); loadEditProg(); }
         function saveCurrentEdit() { syncT(); localStorage.setItem('cp_v105', JSON.stringify(customP)); alert("Tallennettu!"); renderMain(); }
-
-        // KORJAUS: createNewProg asettaa uuden ohjelman heti aktiiviseksi
+        
+        // KORJAUS 2: createNewProg päivittää valikon ja aktivoi uuden ohjelman heti
         function createNewProg() { 
             const name = document.getElementById('newProgName').value.trim(); 
             if(!name) return; 
@@ -396,7 +388,7 @@
             document.getElementById('newProgName').value = ""; 
             curKey = id; 
             localStorage.setItem('last_v105', id);
-            openEdit(); 
+            openEdit(); // Päivittää valikot
             renderMain(); 
         }
 
