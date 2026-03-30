@@ -3,199 +3,255 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Treeniloki Pro V190</title>
+    <title>Treeniloki Pro V195</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800;900&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" />
+    
     <style>
         :root {
-            --mesh-gradient: radial-gradient(at 0% 0%, hsla(210,100%,85%,0.8) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(280,70%,80%,0.8) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(220,90%,85%,0.8) 0, transparent 50%), radial-gradient(at 0% 100%, hsla(330,60%,90%,0.8) 0, transparent 50%), radial-gradient(at 100% 100%, hsla(200,60%,90%,0.8) 0, transparent 50%);
-            --bg-base: #f1f2f6; --glass-card: rgba(255, 255, 255, 0.5); --glass-btn: rgba(255, 255, 255, 0.4); --accent: #3182ce; --text: #1a202c; --border: rgba(226, 232, 240, 0.8); --input-bg: rgba(255, 255, 255, 0.8); --chk-border: rgba(189, 195, 199, 1);
-            --badge-bg: rgba(49, 130, 206, 0.15); --badge-text: #3182ce;
-            --cal-badge-bg: rgba(0, 0, 0, 0.05); --amber-icon: #ffbf00;
-            --save-green-bg: rgba(72, 187, 120, 0.4); --save-green-text: #276749;
+            --bg-base: #f1f2f6; 
+            --glass-card: rgba(255, 255, 255, 0.5); 
+            --glass-btn: rgba(255, 255, 255, 0.4); 
+            --accent: #3182ce; 
+            --text: #1a202c; 
+            --border: rgba(226, 232, 240, 0.8); 
+            --input-bg: rgba(255, 255, 255, 0.8); 
+            --chk-border: rgba(189, 195, 199, 1);
+            --badge-bg: rgba(49, 130, 206, 0.15); 
+            --badge-text: #3182ce;
+            --cal-badge-bg: rgba(0, 0, 0, 0.05); 
+            --amber-icon: #ffbf00;
+            --slate-icon: #718096;
+            --save-green-bg: rgba(72, 187, 120, 0.2); 
+            --save-green-text: #2f855a;
+            --iron-slate: rgba(74, 85, 104, 0.15); 
+            --iron-text: #4a5568;
+            --select-border: rgba(226, 232, 240, 0.8);
+            /* Väriteemat */
+            --bolt-bg: rgba(159, 122, 234, 0.15);
+            --bolt-color: #6b46c1;
+            --home-btn-bg: rgba(74, 85, 104, 0.1);
+            --home-btn-text: #4a5568;
         }
-        [data-theme="dark"] {
-            --bg-base: #0f172a; --glass-card: rgba(30, 41, 59, 0.7); --glass-btn: rgba(30, 41, 59, 0.5); --accent: #90cdf4; --text: #f8fafc; --border: rgba(51, 65, 85, 0.5); --input-bg: rgba(15, 23, 42, 0.6); --chk-border: rgba(108, 117, 125, 0.8);
-            --badge-bg: rgba(144, 205, 244, 0.2); --badge-text: #90cdf4;
-            --cal-badge-bg: rgba(255, 255, 255, 0.1);
-            --save-green-bg: rgba(72, 187, 120, 0.4); --save-green-text: #68d391;
-        }
-        
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: var(--bg-base); background-image: var(--mesh-gradient); background-attachment: fixed; color: var(--text); padding: 20px 0 140px 0; margin: 0; box-sizing: border-box; }
-        
-        .header { display: grid; grid-template-columns: 44px 1fr 44px 44px; gap: 10px; align-items: center; width: 92%; max-width: 500px; margin: 0 auto 20px auto; }
-        .header h3 { text-align: center; font-size: 18px; font-weight: 900; margin: 0; letter-spacing: 2px; text-transform: uppercase; color: var(--text); }
-        .material-symbols-rounded { font-size: 24px; color: var(--text); vertical-align: middle; }
-        #themeIcon { color: var(--amber-icon) !important; }
-        
-        .icon-btn, .theme-switch { background: var(--glass-btn); border: 1px solid var(--border); border-radius: 10px; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px); padding: 0; }
 
+        [data-theme="dark"] {
+            --bg-base: #0f172a; 
+            --glass-card: rgba(30, 41, 59, 0.7); 
+            --glass-btn: rgba(30, 41, 59, 0.5); 
+            --accent: #90cdf4; 
+            --text: #f8fafc; 
+            --border: rgba(51, 65, 85, 0.5); 
+            --input-bg: rgba(15, 23, 42, 0.6); 
+            --chk-border: rgba(108, 117, 125, 0.8);
+            --badge-bg: rgba(144, 205, 244, 0.25); 
+            --badge-text: #90cdf4;
+            --cal-badge-bg: rgba(255, 255, 255, 0.1);
+            --save-green-bg: rgba(72, 187, 120, 0.3); 
+            --save-green-text: #68d391;
+            --iron-slate: rgba(203, 213, 224, 0.2); 
+            --iron-text: #cbd5e0;
+            --amber-icon: #fbd38d;
+            --slate-icon: #a0aec0;
+            --bolt-bg: rgba(183, 148, 244, 0.25);
+            --bolt-color: #d6bcfa;
+            --home-btn-bg: rgba(203, 213, 224, 0.15);
+            --home-btn-text: #cbd5e0;
+        }
+        
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: var(--bg-base); color: var(--text); padding: 20px 0 140px 0; margin: 0; box-sizing: border-box; }
+        
+        .glass-btn { 
+            padding: 0 14px; border-radius: 10px; font-family: inherit; font-weight: 800; font-size: 14px; 
+            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; 
+            height: 48px; border: none; text-transform: uppercase; box-sizing: border-box; transition: opacity 0.2s;
+        }
+        .glass-btn:active { opacity: 0.7; }
+        
+        .header { display: grid; grid-template-columns: 48px 1fr 48px 48px; gap: 10px; align-items: center; width: 92%; max-width: 500px; margin: 0 auto 20px auto; }
+        .header h3 { text-align: center; font-size: 16px; font-weight: 900; margin: 0; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text); }
+        .material-symbols-rounded { font-size: 26px; color: inherit; vertical-align: middle; }
+        
+        .icon-btn { 
+            background: var(--glass-card); border: 1px solid var(--border); border-radius: 14px; 
+            width: 48px; height: 48px; cursor: pointer; display: flex; align-items: center; 
+            justify-content: center; backdrop-filter: blur(10px); padding: 0; color: var(--text);
+            box-sizing: border-box; transition: transform 0.1s;
+        }
+        .icon-btn:active { transform: scale(0.92); }
+
+        .btn-hist { color: var(--accent); }
+        .btn-theme { color: var(--amber-icon); }
+        .btn-settings { color: var(--slate-icon); }
+
+        /* ASETUKSIEN KOTINAPPI (IRON SLATE) */
+        .btn-home-settings { background: var(--home-btn-bg); color: var(--home-btn-text); border: 1px solid var(--border); }
+
+        .card-header-area { display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; padding-bottom: 15px; border-bottom: 1px solid var(--border); }
+        .selector-label { font-size: 14px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; color: var(--text); opacity: 0.8; }
+        .controls-row { display: flex; align-items: center; gap: 10px; }
+        
+        .select-wrapper { 
+            position: relative; flex: 1; display: flex; align-items: center; 
+            background: var(--cal-badge-bg); border: 1px solid var(--border);
+            border-radius: 10px; height: 38px; box-sizing: border-box;
+        }
+        .select-workout { 
+            appearance: none; -webkit-appearance: none; width: 100%; padding: 0 30px 0 12px; 
+            border: none; background: transparent; color: var(--text); font-size: 13px; 
+            font-weight: 800; text-transform: uppercase; outline: none; cursor: pointer; 
+            letter-spacing: 0.5px; height: 100%;
+        }
+        .select-wrapper::after { 
+            content: '\e5cf'; font-family: 'Material Symbols Rounded'; position: absolute; 
+            right: 8px; pointer-events: none; color: var(--text); opacity: 0.5; font-size: 20px; 
+        }
+
+        .day-card, .edit-card, .hist-item { background: var(--glass-card); backdrop-filter: blur(15px); border-radius: 24px; margin: 0 auto 15px auto; width: 92%; max-width: 500px; padding: 25px; border: 1px solid var(--border); box-sizing: border-box; }
         .badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 800; background: var(--badge-bg); color: var(--badge-text); }
         .badge-weight { background: var(--save-green-bg); color: var(--save-green-text); }
+        .badge-iron { background: var(--iron-slate); color: var(--iron-text); margin-top: 4px; font-size: 12px; font-weight: 800; }
         
-        .cal-badge { background: var(--cal-badge-bg); color: var(--text); padding: 6px 14px; font-size: 13px; position: relative; border: 1px solid var(--border); border-radius: 6px; }
+        .cal-badge { background: var(--cal-badge-bg); color: var(--text); padding: 0 12px; font-size: 13px; position: relative; border: 1px solid var(--border); border-radius: 10px; height: 38px; display: flex; align-items: center; gap: 6px; box-sizing: border-box; }
         .hidden-date { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 5; }
-
-        .select-workout { appearance: none; width: 92%; max-width: 500px; display: block; margin: 0 auto 20px auto; padding: 14px 20px; border-radius: 15px; border: 1px solid var(--border); background: var(--glass-card); color: var(--accent); font-size: 16px; font-weight: 800; box-sizing: border-box; text-align: center; outline: none; }
         
-        .day-card, .edit-card, .hist-item { background: var(--glass-card); backdrop-filter: blur(15px); border-radius: 24px; margin: 0 auto 15px auto; width: 92%; max-width: 500px; padding: 25px; border: 1px solid var(--border); box-sizing: border-box; }
-        
-        .ex-row { display: flex; flex-direction: column; gap: 12px; padding: 20px 0; border-bottom: 1px solid var(--border); }
+        .ex-row { display: flex; flex-direction: column; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
         .ex-row-middle { display: flex; align-items: stretch; justify-content: space-between; gap: 8px; }
-        .ex-row-bottom { display: flex; gap: 8px; flex-wrap: wrap; }
-        
         .input-group { display: flex; flex-direction: column; gap: 4px; align-items: center; justify-content: flex-end; }
-        .input-label { font-size: 9px; font-weight: 900; text-transform: uppercase; opacity: 0.6; letter-spacing: 0.5px; color: var(--text); }
-
+        .input-label { font-size: 9px; font-weight: 900; text-transform: uppercase; opacity: 0.6; color: var(--text); }
         .input-wrapper { position: relative; width: 75px; height: 38px; }
-        .input-wrapper span.unit { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 12px; font-weight: 800; opacity: 0.5; pointer-events: none; color: var(--text); }
-
+        .input-wrapper span.unit { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 12px; font-weight: 800; opacity: 0.5; color: var(--text); }
+        
         .c-w-input, .c-s-select { width: 75px; height: 38px; border-radius: 10px; border: 2px solid var(--chk-border); text-align: center; background: var(--input-bg); font-size: 15px; font-weight: 800; color: var(--text); outline: none; appearance: none; box-sizing: border-box; }
-        .c-w-input { padding-right: 22px; }
-        .c-s-select { cursor: pointer; padding: 0 4px; }
-
-        .styled-checkbox { width: 38px; height: 38px; border-radius: 10px; border: 2px solid var(--chk-border); appearance: none; -webkit-appearance: none; background: var(--input-bg); position: relative; cursor: pointer; flex-shrink: 0; margin: 0; box-sizing: border-box; }
+        .styled-checkbox { width: 38px; height: 38px; border-radius: 10px; border: 2px solid var(--chk-border); appearance: none; -webkit-appearance: none; background: var(--input-bg); position: relative; cursor: pointer; margin: 0; box-sizing: border-box; }
         .styled-checkbox:checked { background: var(--accent); border-color: var(--accent); }
         .styled-checkbox:checked::after { content: '✓'; position: absolute; color: white; font-size: 26px; left: 7px; top: 0px; font-weight: 900; }
-
+        
         .nav { position: fixed; bottom: 0; left: 0; right: 0; padding: 20px; background: rgba(255,255,255,0.3); backdrop-filter: blur(15px); border-top: 1px solid var(--border); z-index: 1000; }
-        .glass-btn { padding: 0 14px; border-radius: 10px; font-family: 'Inter', sans-serif; font-weight: 800; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; height: 48px; box-sizing: border-box; text-transform: uppercase; border: none; letter-spacing: 0.5px; }
         
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-base); z-index: 9999; overflow-y: auto; padding: 20px 0; font-family: 'Inter', sans-serif !important; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-base); z-index: 9999; overflow-y: auto; padding: 20px 0; }
+        .edit-input { width: 100%; padding: 8px; border-radius: 10px; border: 1px solid var(--border); background: var(--input-bg); color: var(--text); height: 44px; box-sizing: border-box; font-weight: 500; font-size: 15px; }
         
-        /* OHJE-MODAALIN ERITYISUUS: korkeampi z-index jotta se tulee Asetusten päälle */
-        #helpModal { z-index: 10001; }
-
-        .btn-done { background: #4A5568 !important; color: white !important; width: 140px; margin: 30px auto; display: block; border-radius: 10px; }
-        
-        .modal-header { display: grid; grid-template-columns: 44px 1fr 44px; align-items: center; width: 92%; max-width: 500px; margin: 0 auto 20px auto; }
-        
-        .home-btn { background: var(--glass-btn); border: 1px solid var(--border); border-radius: 10px; width: 38px; height: 38px; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px); padding: 0; }
-        .home-btn .material-symbols-rounded { color: var(--text); font-size: 24px; }
-
-        .edit-input { width: 100%; padding: 8px; border-radius: 10px; border: 1px solid var(--border); background: var(--input-bg); color: var(--text); height: 38px; box-sizing: border-box; outline: none; font-weight: 500; font-size: 15px; }
         .edit-ex-block { padding: 15px 0; border-bottom: 1px solid var(--border); }
-        .edit-row-top { display: flex; gap: 8px; margin-bottom: 8px; align-items: center; }
-        .edit-row-bottom { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 8px; align-items: center; }
+        .edit-row-top { display: flex; gap: 8px; margin-bottom: 10px; align-items: center; }
+        .edit-row-bottom { display: grid; grid-template-columns: 1.8fr 1fr 1.2fr; gap: 8px; align-items: center; }
+        
         .del-btn-text { background:none; border:none; color:#f56565; font-size: 24px; cursor:pointer; padding:0; line-height:1; }
+        .trash-btn { width: auto; height: 44px; aspect-ratio: 1/1; background: rgba(245, 101, 101, 0.2); border: none; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; box-sizing: border-box; }
         
-        .btn-backup-container { display: flex; gap: 12px; margin-top: 12px; margin-bottom: 20px; }
-        .btn-backup { flex: 1; border-radius: 10px; font-family: 'Inter', sans-serif; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 8px; height: 38px; cursor: pointer; border: none; text-transform: uppercase; background-color: #4A5568; color: white; font-size: 11px; }
-        .btn-backup .material-symbols-rounded { color: white; font-size: 18px; }
-        
-        .quick-select-btn { width: 38px; height: 38px; background: var(--glass-btn); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; }
+        .quick-select-btn { 
+            width: 42px; height: 42px; border: 1px solid var(--border); border-radius: 12px; 
+            display: flex; align-items: center; justify-content: center; cursor: pointer; 
+            flex-shrink: 0; background: var(--bolt-bg); color: var(--bolt-color); transition: transform 0.1s;
+        }
+        .quick-select-btn:active { transform: scale(0.9); }
+
         .quick-menu { position: absolute; background: var(--bg-base); border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); z-index: 10000; max-height: 200px; overflow-y: auto; width: 200px; display: none; }
         .quick-menu div { padding: 12px; border-bottom: 1px solid var(--border); cursor: pointer; font-size: 14px; font-weight: 500; }
-
-        .help-section { margin-bottom: 15px; }
-        .help-section b { color: var(--accent); display: block; margin-bottom: 5px; text-transform: uppercase; font-size: 12px; }
-        .help-section p { font-size: 14px; margin: 0; line-height: 1.4; opacity: 0.9; }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <button class="icon-btn" onclick="openHistory()"><span class="material-symbols-rounded">history</span></button>
+        <button class="icon-btn btn-hist" onclick="openHistory()"><span class="material-symbols-rounded">history</span></button>
         <h3>TREENILOKI</h3>
-        <div class="theme-switch" onclick="toggleTheme()"><span class="material-symbols-rounded" id="themeIcon">light_mode</span></div>
-        <button class="icon-btn" onclick="openEdit()"><span class="material-symbols-rounded">tune</span></button>
+        <button class="icon-btn btn-theme" onclick="toggleTheme()"><span class="material-symbols-rounded" id="themeIcon">light_mode</span></button>
+        <button class="icon-btn btn-settings" onclick="openEdit()"><span class="material-symbols-rounded">tune</span></button>
     </div>
 
-    <select class="select-workout" id="workoutSelector" onchange="changeW()"></select>
     <div id="mainContent"></div>
 
     <div class="nav">
         <div style="display:flex; gap:12px; max-width:500px; margin:0 auto;">
-            <button class="glass-btn" style="flex: 1; background: rgba(245, 101, 101, 0.4); color: #c53030;" onclick="renderMain()">NOLLAA</button>
-            <button class="glass-btn" style="flex: 2; background: var(--save-green-bg); color: var(--save-green-text);" onclick="saveData()">TALLENNA TREENI</button>
+            <button class="glass-btn" style="flex: 1; background: rgba(245, 101, 101, 0.2); color: #c53030;" onclick="renderMain()">NOLLAA</button>
+            <button class="glass-btn" style="flex: 2; background: var(--save-green-bg); color: var(--save-green-text);" onclick="saveData()">
+                <span class="material-symbols-rounded">save</span>TALLENNA
+            </button>
         </div>
     </div>
 
     <div id="quickMenu" class="quick-menu"></div>
-    <div id="historyModal" class="modal"><div id="historyContent"></div><button class="glass-btn btn-done" onclick="closeModal('historyModal')">SULJE</button></div>
+    <div id="historyModal" class="modal"><div id="historyContent"></div><button class="glass-btn" style="margin: 20px auto; background: var(--iron-slate); color: var(--iron-text); display: block;" onclick="closeModal('historyModal')">SULJE</button></div>
     
-    <div id="helpModal" class="modal">
-        <div class="modal-header">
-            <div style="width:38px;"></div>
-            <h2 style="text-align:center; margin:0;">Ohjeistus</h2>
-            <div style="width:38px;"></div>
-        </div>
-        <div class="edit-card">
-            <div class="help-section">
-                <b>Luo uusi ohjelma</b>
-                <p>Kirjoita nimi tekstikenttään ja paina "LUO". Tämä lisää uuden tyhjän treenipohjan listaan.</p>
-            </div>
-            <div class="help-section">
-                <b>Vie / Tuo ohjelma</b>
-                <p>Voit ladata ohjelmasi tiedostona talteen tai palauttaa aiemmin tallennetun varmuuskopion.</p>
-            </div>
-            <div class="help-section">
-                <b>Muokkaa ohjelmaa</b>
-                <p>Valitse ohjelma listasta. Voit poistaa ohjelman roskakorista tai lisätä uusia liikkeitä alhaalta.</p>
-            </div>
-            <div class="help-section">
-                <b>Salama-painike (Bolt)</b>
-                <p>Voit valita liikkeen nimen nopeasti esitallennetuista suosikeistasi kirjoittamisen sijaan.</p>
-            </div>
-            <div class="help-section">
-                <b>Tankojen painot</b>
-                <p>Aseta tangon omapaino tähän. Päänäkymässä sovellus laskee tämän painon mukaan kokonaistulokseen.</p>
-            </div>
-            <div class="help-section">
-                <b>Pikavalinta liikkeet</b>
-                <p>Tässä voit hallita suosikkiliikkeitäsi, jotka ilmestyvät Salama-painikkeen alle.</p>
-            </div>
-        </div>
-        <button class="glass-btn btn-done" onclick="closeModal('helpModal')">SELVÄ</button>
-    </div>
-
     <div id="editModal" class="modal">
-        <div class="modal-header">
-            <button class="home-btn" onclick="closeModal('editModal')"><span class="material-symbols-rounded">home</span></button>
-            <h2 style="text-align:center; margin:0;">Asetukset</h2>
-            <button class="home-btn" onclick="openHelp()"><span class="material-symbols-rounded">help</span></button>
+        <div style="display: grid; grid-template-columns: 48px 1fr 48px; align-items: center; width: 92%; max-width: 500px; margin: 0 auto 20px auto;">
+            <button class="icon-btn btn-home-settings" onclick="closeModal('editModal')"><span class="material-symbols-rounded">home</span></button>
+            <h2 style="text-align: center; margin: 0; font-weight: 900; letter-spacing: 1px; text-transform: uppercase;">Asetukset</h2>
+            <button class="icon-btn btn-home-settings" onclick="openHelp()"><span class="material-symbols-rounded">help</span></button>
         </div>
-        
+
         <div class="edit-card">
             <h4 style="margin-top:0;">Luo uusi ohjelma</h4>
             <div style="margin-bottom:25px; padding-bottom:10px; border-bottom:1px solid var(--border);">
-                <div style="display:flex; gap:10px;">
-                    <input type="text" id="newProgName" class="edit-input" placeholder="Ohjelman nimi...">
-                    <button class="glass-btn" style="background:var(--accent); color:white; height:38px; padding: 0 10px;" onclick="createNewProg()">LUO</button>
+                <div style="display:flex; gap:10px; margin-bottom:15px;">
+                    <input type="text" id="newProgName" class="edit-input" style="height: 48px;" placeholder="Ohjelman nimi...">
+                    <button class="glass-btn" style="background:var(--badge-bg); color:var(--badge-text); flex-shrink: 0;" onclick="createNewProg()">
+                        <span class="material-symbols-rounded">add_circle</span>LISÄÄ
+                    </button>
                 </div>
-                <div class="btn-backup-container">
-                    <button class="btn-backup" onclick="exportData()"><span class="material-symbols-rounded">download</span>VIE OHJELMA</button>
-                    <button class="btn-backup" onclick="document.getElementById('importInp').click()"><span class="material-symbols-rounded">upload</span>TUO OHJELMA</button>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                    <button class="glass-btn" style="background: var(--iron-slate); color: var(--iron-text);" onclick="exportData()">
+                        <span class="material-symbols-rounded">download</span>VIE OHJELMA
+                    </button>
+                    <label class="glass-btn" style="background: var(--iron-slate); color: var(--iron-text); cursor: pointer;">
+                        <span class="material-symbols-rounded">upload</span>TUO OHJELMA
+                        <input type="file" style="display:none" onchange="importData(event)">
+                    </label>
                 </div>
             </div>
 
             <h4>Muokkaa ohjelmaa</h4>
             <div style="display:flex; gap:10px; margin-bottom:15px; align-items:center;">
                 <select id="editProgSelector" class="edit-input" onchange="loadEditProg()"></select>
-                <button class="icon-btn" style="width:38px; height:38px; flex-shrink:0; background:rgba(245,101,101,0.2); border:none;" onclick="deleteCurrentProg()"><span class="material-symbols-rounded" style="color:#f56565;">delete</span></button>
+                <button class="trash-btn" onclick="deleteCurrentProg()">
+                    <span class="material-symbols-rounded" style="color:#f56565;">delete</span>
+                </button>
             </div>
             <div id="progEditContent"></div>
             <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:20px;">
-                <button class="glass-btn" style="background:var(--accent); color:white; height:38px;" onclick="addTempEx()">+ LISÄÄ LIIKE</button>
-                <button class="glass-btn" style="background:#48bb78; color:white; height:38px;" onclick="saveCurrentEdit()">TALLENNA</button>
+                <button class="glass-btn" style="background:var(--badge-bg); color:var(--badge-text);" onclick="addTempEx()">
+                    <span class="material-symbols-rounded">add_circle</span>LISÄÄ LIIKE
+                </button>
+                <button class="glass-btn" style="background:var(--save-green-bg); color:var(--save-green-text);" onclick="saveCurrentEdit()">
+                    <span class="material-symbols-rounded">save</span>TALLENNA
+                </button>
             </div>
-            <input type="file" id="importInp" style="display:none" accept=".json" onchange="importData(event)">
+        </div>
+
+        <div class="edit-card">
+            <h4>Tankojen painot (kg)</h4>
+            <div id="barSettings" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;"></div>
+            <button class="glass-btn" style="width:100%; margin-top:15px; background:var(--save-green-bg); color:var(--save-green-text);" onclick="saveBars()">
+                <span class="material-symbols-rounded">save</span>TALLENNA
+            </button>
         </div>
 
         <div class="edit-card">
             <h4>Pikavalinta liikkeet</h4>
-            <div id="quickMoveList" style="margin-bottom:15px;"></div>
-            <div style="display:flex; gap:10px;">
-                <input type="text" id="newQuickMove" class="edit-input" placeholder="Uusi liike...">
-                <button class="glass-btn" style="background:var(--accent); color:white; height:38px; padding: 0 10px;" onclick="addQuickMove()">LISÄÄ</button>
-            </div>
+            <div id="quickMoveSettings" style="display:flex; flex-direction:column; gap:8px;"></div>
+            <button class="glass-btn" style="width:100%; margin-top:15px; background:var(--badge-bg); color:var(--badge-text);" onclick="addQuickMove()">
+                <span class="material-symbols-rounded">add_circle</span>LISÄÄ PIKAVALINTA
+            </button>
+            <button class="glass-btn" style="width:100%; margin-top:10px; background:var(--save-green-bg); color:var(--save-green-text);" onclick="saveQuickMoves()">
+                <span class="material-symbols-rounded">save</span>TALLENNA
+            </button>
         </div>
 
-        <div class="edit-card">
-            <h4>Tankojen painot</h4>
-            <div id="tankoInputs"></div>
-            <button class="glass-btn" style="background: var(--save-green-bg); color: var(--save-green-text); width:100%; margin-top:10px; height:38px;" onclick="saveBarWeights()">TALLENNA TANGOT</button>
+        <button class="glass-btn" style="margin: 30px auto; width: 140px; background: var(--iron-slate); color: var(--iron-text); display: block;" onclick="closeModal('editModal')">VALMIS</button>
+    </div>
+
+    <div id="helpModal" class="modal">
+        <div style="display: grid; grid-template-columns: 48px 1fr 48px; align-items: center; width: 92%; max-width: 500px; margin: 0 auto 20px auto;">
+            <button class="icon-btn btn-home-settings" onclick="closeModal('helpModal')"><span class="material-symbols-rounded">arrow_back</span></button>
+            <h2 style="text-align: center; margin: 0; font-weight: 900; letter-spacing: 1px; text-transform: uppercase;">Käyttöohje</h2>
+            <div style="width:48px;"></div>
         </div>
-        <button class="glass-btn btn-done" onclick="closeModal('editModal')">VALMIS</button>
+        <div class="edit-card" style="font-size: 14px; line-height: 1.6;">
+            <p><b>1. Ohjelmat:</b> Voit luoda useita eri treeniohjelmia. Valitse muokattava ohjelma listasta tai luo uusi "Lisää"-painikkeella.</p>
+            <p><b>2. Pikavalinnat (⚡):</b> Ohjelman muokkauksessa näkyvä purppura salama avaa pikavalinnan. Voit lisätä omia suosikkiliikkeitäsi asetusten alareunasta.</p>
+            <p><b>3. Tankojen painot:</b> Määritä tankojen painot kerran. Kun valitset liikkeelle tangon, sovellus laskee kokonaispainon puolestasi päänäkymässä.</p>
+            <p><b>4. Historia:</b> Tallentamasi treenit siirtyvät historiaan, josta näet myös viimeksi käytetyt painot kunkin liikkeen kohdalla.</p>
+            <p><b>5. Varmuuskopiointi:</b> Käytä "Vie ohjelma" -toimintoa tallentaaksesi asetuksesi tiedostoon. Voit palauttaa ne milloin vain "Tuo ohjelma" -napilla.</p>
+        </div>
+        <button class="glass-btn" style="margin: 20px auto; width: 140px; background: var(--iron-slate); color: var(--iron-text); display: block;" onclick="closeModal('helpModal')">SULJE</button>
     </div>
 
     <script>
@@ -210,114 +266,79 @@
         let curKey = localStorage.getItem('last_v105') || Object.keys(customP)[0];
         let tempEditKey = "";
 
-        function openHelp() {
-            document.getElementById('helpModal').style.display = 'block';
-        }
+        // OHJEEN AVAAMINEN
+        function openHelp() { document.getElementById('helpModal').style.display = 'block'; }
+
+        function formatD(d) { if(!d) return ""; const s = d.split('-'); return `${s[2]}.${s[1]}.${s[0]}`; }
+        function updateDateDisplay(val) { document.getElementById('dateDisplay').innerText = formatD(val); }
+        function findLastWeight(exName) { for (let entry of history) { let found = entry.moves.find(m => m.name === exName); if (found) return found.weight; } return "-"; }
 
         function renderMain() {
-            const sel = document.getElementById('workoutSelector');
-            if(sel) sel.innerHTML = Object.keys(customP).map(k => `<option value="${k}" ${k===curKey?'selected':''}>${customP[k].name}</option>`).join('');
-            const cont = document.getElementById('mainContent');
-            cont.innerHTML = "";
-            let p = customP[curKey];
-            if(!p) return;
-            const card = document.createElement('div');
-            card.className = 'day-card';
+            const cont = document.getElementById('mainContent'); cont.innerHTML = "";
+            let p = customP[curKey]; if(!p) return;
+            const card = document.createElement('div'); card.className = 'day-card';
             const today = new Date().toISOString().split('T')[0];
-            card.innerHTML = `<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;"><h1 style="font-size:20px; margin:0; font-weight:800; color:var(--text);">${p.name}</h1><div class="badge cal-badge"><input type="date" class="hidden-date" id="workoutDate" value="${today}" onchange="updateDateDisplay(this.value)"><span id="dateDisplay">${formatD(today)}</span><span class="material-symbols-rounded" style="font-size:18px;">calendar_month</span></div></div><div id="rows"></div>`;
+            card.innerHTML = `
+                <div class="card-header-area">
+                    <span class="selector-label">TREENIOHJELMA</span>
+                    <div class="controls-row">
+                        <div class="select-wrapper">
+                            <select class="select-workout" id="workoutSelector" onchange="changeW()">
+                                ${Object.keys(customP).map(k => `<option value="${k}" ${k===curKey?'selected':''}>${customP[k].name}</option>`).join('')}
+                            </select>
+                        </div>
+                        <div class="badge cal-badge">
+                            <input type="date" class="hidden-date" id="workoutDate" value="${today}" onchange="updateDateDisplay(this.value)">
+                            <span id="dateDisplay">${formatD(today)}</span>
+                            <span class="material-symbols-rounded" style="font-size:18px; color:inherit;">calendar_month</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="rows"></div>`;
             cont.appendChild(card);
-            
             p.exs.forEach(ex => {
-                const last = history.find(h => h.moves.find(m => m.name === ex.n))?.moves.find(m => m.name === ex.n)?.weight || "0";
-                const row = document.createElement('div');
-                row.className = 'ex-row';
+                const lastW = findLastWeight(ex.n);
+                const row = document.createElement('div'); row.className = 'ex-row';
                 row.innerHTML = `
                 <div class="ex-row-top"><b style="font-size:17px; color:var(--text);">${ex.n}</b></div>
                 <div class="ex-row-middle">
-                    <div class="input-group">
-                        <span class="input-label">Paino</span>
-                        <div class="input-wrapper">
-                            <input type="number" step="0.5" class="c-w-input" id="w_${ex.id}" oninput="uTot('${ex.id}','${ex.b}')" placeholder="0">
-                            <span class="unit">kg</span>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-label">Sarjat</span>
-                        <select class="c-s-select" id="s_${ex.id}">${SER_OPTS.map(v=>`<option value="${v}" ${ex.s==v?'selected':''}>${v}</option>`).join('')}</select>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-label">Toistot</span>
-                        <select class="c-s-select" id="r_${ex.id}">${REP_OPTS.map(v=>`<option value="${v}" ${ex.r==v?'selected':''}>${v}</option>`).join('')}</select>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-label">Tehty</span>
-                        <input type="checkbox" class="styled-checkbox" id="c_${ex.id}">
-                    </div>
+                    <div class="input-group"><span class="input-label">Paino</span><div class="input-wrapper"><input type="number" step="0.5" class="c-w-input" id="w_${ex.id}" oninput="uTot('${ex.id}','${ex.b}')" placeholder="0"><span class="unit">kg</span></div></div>
+                    <div class="input-group"><span class="input-label">Sarjat</span><select class="c-s-select" id="s_${ex.id}">${SER_OPTS.map(v=>`<option value="${v}" ${ex.s==v?'selected':''}>${v}</option>`).join('')}</select></div>
+                    <div class="input-group"><span class="input-label">Toistot</span><select class="c-s-select" id="r_${ex.id}">${REP_OPTS.map(v=>`<option value="${v}" ${ex.r==v?'selected':''}>${v}</option>`).join('')}</select></div>
+                    <div class="input-group"><span class="input-label">Tehty</span><input type="checkbox" class="styled-checkbox" id="c_${ex.id}"></div>
                 </div>
-                <div class="ex-row-bottom">
+                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:6px;">
                     <span class="badge badge-weight" id="t_${ex.id}">${getInitialLabel(ex.b)}</span>
-                    <span class="badge">Viimeksi: ${last}kg</span>
+                    <span class="badge" style="background:var(--badge-bg); color:var(--badge-text);">Viimeksi: ${lastW}kg</span>
                 </div>`;
                 card.querySelector('#rows').appendChild(row);
             });
         }
 
-        function getInitialLabel(bName) {
-            const barW = barWeights[bName] || 0;
-            return (!bName || bName === "Ei tankoa") ? "0.0kg" : `Yht: ${barW.toFixed(1)}kg (sis. tanko)`;
-        }
+        function getInitialLabel(bName) { const barW = barWeights[bName] || 0; return (!bName || bName === "Ei tankoa") ? "0.0kg" : `Yht: ${barW.toFixed(1)}kg (sis. tanko)`; }
+        function uTot(id, bN) { const val = parseFloat(document.getElementById('w_'+id).value) || 0; const bar = (bN && bN !== "Ei tankoa") ? (barWeights[bN] || 0) : 0; document.getElementById('t_'+id).innerText = (bar === 0) ? `${val.toFixed(1)}kg` : `Yht: ${(val + bar).toFixed(1)}kg (sis. tanko)`; }
+        function changeW() { curKey = document.getElementById('workoutSelector').value; localStorage.setItem('last_v105', curKey); renderMain(); }
+        function toggleTheme() { const d = document.documentElement; const isDark = d.getAttribute('data-theme') === 'dark'; d.setAttribute('data-theme', isDark ? 'light' : 'dark'); document.getElementById('themeIcon').innerText = isDark ? 'light_mode' : 'dark_mode'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        function openEdit() { document.getElementById('editModal').style.display = 'block'; document.getElementById('editProgSelector').innerHTML = Object.keys(customP).map(k => `<option value="${k}" ${k===curKey?'selected':''}>${customP[k].name}</option>`).join('') || ''; loadEditProg(); loadBarSettings(); loadQuickMoveSettings(); }
 
-        function uTot(id, bN) { 
-            const val = parseFloat(document.getElementById('w_'+id).value) || 0;
-            const bar = (bN && bN !== "Ei tankoa") ? (barWeights[bN] || 0) : 0;
-            document.getElementById('t_'+id).innerText = (bar === 0) ? `${val.toFixed(1)}kg` : `Yht: ${(val + bar).toFixed(1)}kg (sis. tanko)`;
-        }
-
-        function openEdit() {
-            document.getElementById('editModal').style.display = 'block';
-            document.getElementById('tankoInputs').innerHTML = Object.keys(barWeights).map(n => `<div style="display:flex; justify-content:space-between; margin-bottom:8px; align-items:center;"><span>${n}</span><input type="number" step="0.1" id="inp_${n.replace(/\s+/g,'')}" value="${barWeights[n]}" style="width:75px;" class="edit-input"></div>`).join('');
-            document.getElementById('editProgSelector').innerHTML = Object.keys(customP).map(k => `<option value="${k}" ${k===curKey?'selected':''}>${customP[k].name}</option>`).join('');
-            renderQuickMoveSettings();
-            loadEditProg();
-        }
-
-        function renderQuickMoveSettings() {
-            document.getElementById('quickMoveList').innerHTML = quickMoves.map((m, i) => `<div style="display:flex; justify-content:space-between; padding:8px; border-bottom:1px solid var(--border); align-items:center;"><span>${m}</span><button class="del-btn-text" onclick="removeQuickMove(${i})">×</button></div>`).join('');
-        }
-
-        function addQuickMove() {
-            const val = document.getElementById('newQuickMove').value.trim();
-            if(val) { quickMoves.push(val); localStorage.setItem('qm_v105', JSON.stringify(quickMoves)); document.getElementById('newQuickMove').value = ""; renderQuickMoveSettings(); }
-        }
-
-        function removeQuickMove(i) { quickMoves.splice(i, 1); localStorage.setItem('qm_v105', JSON.stringify(quickMoves)); renderQuickMoveSettings(); }
-
-        function showQuickMenu(e, index) {
-            const menu = document.getElementById('quickMenu');
-            const rect = e.currentTarget.getBoundingClientRect();
-            menu.style.display = 'block'; menu.style.top = (rect.bottom + window.scrollY) + 'px'; menu.style.left = rect.left + 'px';
-            menu.innerHTML = quickMoves.map(m => `<div onclick="selectQuickMove('${m}', ${index})">${m}</div>`).join('');
-            const close = () => { menu.style.display='none'; document.removeEventListener('click', close); };
-            setTimeout(() => document.addEventListener('click', close), 10);
-        }
-
-        function selectQuickMove(name, index) { document.getElementById(`en_${index}`).value = name; document.getElementById('quickMenu').style.display = 'none'; }
-        
         function loadEditProg() {
             tempEditKey = document.getElementById('editProgSelector').value;
-            const p = customP[tempEditKey];
-            if(!p) return;
+            const p = customP[tempEditKey]; if(!p) return;
             let html = '';
             p.exs.forEach((e, i) => {
                 html += `
                 <div class="edit-ex-block">
                     <div class="edit-row-top">
                         <div class="quick-select-btn" onclick="showQuickMenu(event, ${i})"><span class="material-symbols-rounded">bolt</span></div>
-                        <input type="text" class="edit-input" id="en_${i}" value="${e.n}">
+                        <input type="text" class="edit-input" id="en_${i}" value="${e.n}" placeholder="Liikkeen nimi">
                         <button class="del-btn-text" onclick="removeTempEx(${i})">×</button>
                     </div>
                     <div class="edit-row-bottom">
-                        <select class="edit-input" id="eb_${i}">${Object.keys(barWeights).map(bn => `<option value="${bn}" ${e.b===bn?'selected':''}>${bn}</option>`).join('')}<option value="Ei tankoa" ${(!e.b || e.b==='Ei tankoa')?'selected':''}>Ei tankoa</option></select>
+                        <select class="edit-input" id="eb_${i}">
+                            ${Object.keys(barWeights).map(bn => `<option value="${bn}" ${e.b===bn?'selected':''}>${bn}</option>`).join('')}
+                            <option value="Ei tankoa" ${(!e.b || e.b==='Ei tankoa')?'selected':''}>Ei tankoa</option>
+                        </select>
                         <select class="edit-input" id="es_${i}">${SER_OPTS.map(v=>`<option value="${v}" ${e.s==v?'selected':''}>${v} sarjaa</option>`).join('')}</select>
                         <select class="edit-input" id="er_${i}">${REP_OPTS.map(v=>`<option value="${v}" ${e.r==v?'selected':''}>${v} toistoa</option>`).join('')}</select>
                     </div>
@@ -326,28 +347,26 @@
             document.getElementById('progEditContent').innerHTML = html;
         }
 
-        function syncT() { 
-            const p = customP[tempEditKey]; if(!p) return;
-            p.exs.forEach((e, i) => { e.n = document.getElementById('en_'+i).value; e.s = document.getElementById('es_'+i).value; e.r = document.getElementById('er_'+i).value; e.b = document.getElementById('eb_'+i).value; }); 
-        }
+        function loadBarSettings() { document.getElementById('barSettings').innerHTML = Object.keys(barWeights).map(name => `<div><span style="font-size:12px; font-weight:700;">${name}</span><input type="number" step="0.1" class="edit-input" id="bw_${name}" value="${barWeights[name]}"></div>`).join(''); }
+        function saveBars() { Object.keys(barWeights).forEach(name => { barWeights[name] = parseFloat(document.getElementById(`bw_${name}`).value) || 0; }); localStorage.setItem('bw_v105', JSON.stringify(barWeights)); alert("Tallennettu!"); renderMain(); }
+        function loadQuickMoveSettings() { document.getElementById('quickMoveSettings').innerHTML = quickMoves.map((m, i) => `<div style="display:flex; gap:8px;"><input type="text" class="edit-input" id="qm_${i}" value="${m}"><button class="del-btn-text" onclick="removeQuickMove(${i})">×</button></div>`).join(''); }
+        function addQuickMove() { quickMoves.push(""); loadQuickMoveSettings(); }
+        function removeQuickMove(i) { quickMoves.splice(i,1); loadQuickMoveSettings(); }
+        function saveQuickMoves() { quickMoves = []; const inputs = document.querySelectorAll('[id^="qm_"]'); inputs.forEach(input => { if(input.value.trim()) quickMoves.push(input.value.trim()); }); localStorage.setItem('qm_v105', JSON.stringify(quickMoves)); alert("Tallennettu!"); }
 
+        function syncT() { const p = customP[tempEditKey]; if(!p) return; p.exs.forEach((e, i) => { e.n = document.getElementById('en_'+i).value; e.s = document.getElementById('es_'+i).value; e.r = document.getElementById('er_'+i).value; e.b = document.getElementById('eb_'+i).value; }); }
         function addTempEx() { syncT(); customP[tempEditKey].exs.push({id:'e'+Date.now(), n:'', s:'3', r:'8-10', b:'Ei tankoa'}); loadEditProg(); }
         function removeTempEx(i) { syncT(); customP[tempEditKey].exs.splice(i,1); loadEditProg(); }
         function saveCurrentEdit() { syncT(); localStorage.setItem('cp_v105', JSON.stringify(customP)); alert("Tallennettu!"); renderMain(); }
         function createNewProg() { const name = document.getElementById('newProgName').value.trim(); if(!name) return; const id = 'v' + Date.now(); customP[id] = { name: name, exs: [] }; localStorage.setItem('cp_v105', JSON.stringify(customP)); document.getElementById('newProgName').value = ""; curKey = id; openEdit(); renderMain(); }
-        function saveBarWeights() { Object.keys(barWeights).forEach(n => { const val = document.getElementById('inp_'+n.replace(/\s+/g,'')).value; barWeights[n] = parseFloat(val) || 0; }); localStorage.setItem('bw_v105', JSON.stringify(barWeights)); alert("Päivitetty!"); renderMain(); }
-        function deleteCurrentProg() { if(Object.keys(customP).length > 1 && confirm("Poista?")) { delete customP[tempEditKey]; curKey = Object.keys(customP)[0]; localStorage.setItem('cp_v105', JSON.stringify(customP)); openEdit(); renderMain(); } }
-        function formatD(d) { const s = d.split('-'); return `${s[2]}.${s[1]}.${s[0]}`; }
-        function updateDateDisplay(val) { document.getElementById('dateDisplay').innerText = formatD(val); }
-        function toggleTheme() { const d = document.documentElement; const isDark = d.getAttribute('data-theme') === 'dark'; d.setAttribute('data-theme', isDark ? 'light' : 'dark'); document.getElementById('themeIcon').innerText = isDark ? 'light_mode' : 'dark_mode'; }
-        function changeW() { curKey = document.getElementById('workoutSelector').value; localStorage.setItem('last_v105', curKey); renderMain(); }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-        
+        function deleteCurrentProg() { if(Object.keys(customP).length > 1 && confirm("Poista ohjelma?")) { delete customP[tempEditKey]; curKey = Object.keys(customP)[0]; localStorage.setItem('cp_v105', JSON.stringify(customP)); openEdit(); renderMain(); } }
+
         function openHistory() {
             document.getElementById('historyModal').style.display = 'block';
-            document.getElementById('historyContent').innerHTML = `<h2 style="text-align:center;">Historia</h2>` + history.map((e, idx) => `<div class="hist-item"><div style="display:flex; justify-content:space-between; margin-bottom:10px; align-items:center;"><b>${e.date}</b><button class="del-btn-text" onclick="deleteHist(${idx})">×</button></div>${e.moves.map(m => `<div style="display:flex; justify-content:space-between; font-size:13px; border-top:1px solid var(--border); padding:8px 0;"><span><b>${m.name}</b><br><small style="opacity:0.7;">${m.vol || ''}</small></span><span class="badge">${m.weight}kg</span></div>`).join('')}</div>`).join('') || '<p style="text-align:center;">Ei historiaa.</p>';
+            document.getElementById('historyContent').innerHTML = `<h2 style="text-align:center; font-weight:900;">Historia</h2>` + history.map((e, idx) => `<div class="hist-item"><div style="display:flex; justify-content:space-between; margin-bottom:10px; align-items:center;"><b>${e.date}</b><button class="del-btn-text" onclick="deleteHist(${idx})">×</button></div>${e.moves.map(m => `<div style="display:flex; justify-content:space-between; font-size:14px; border-top:1px solid var(--border); padding:12px 0;"><span><b>${m.name}</b><br><span class="badge badge-iron">${m.vol || ''}</span></span><span class="badge" style="align-self: flex-start; margin-top:2px;">${m.weight}kg</span></div>`).join('')}</div>`).join('') || '<p style="text-align:center;">Ei historiaa.</p>';
         }
-        function deleteHist(idx) { if(confirm("Poista?")) { history.splice(idx,1); localStorage.setItem('hist_v105', JSON.stringify(history)); openHistory(); } }
+        function deleteHist(idx) { if(confirm("Poista historiamerkintä?")) { history.splice(idx,1); localStorage.setItem('hist_v105', JSON.stringify(history)); openHistory(); } }
+
         function exportData() { const blob = new Blob([JSON.stringify({programs:customP, bars:barWeights, history:history, quickMoves:quickMoves})], {type:'application/json'}); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'treeniloki_backup.json'; a.click(); }
         function importData(e) { const reader = new FileReader(); reader.onload = (ev) => { const d = JSON.parse(ev.target.result); customP=d.programs; barWeights=d.bars; history=d.history; quickMoves=d.quickMoves||MOVE_DEFAULTS; localStorage.setItem('cp_v105', JSON.stringify(customP)); localStorage.setItem('bw_v105', JSON.stringify(barWeights)); localStorage.setItem('hist_v105', JSON.stringify(history)); localStorage.setItem('qm_v105', JSON.stringify(quickMoves)); location.reload(); }; reader.readAsText(e.target.files[0]); }
 
@@ -364,6 +383,9 @@
             if(!entry.moves.length) return alert("Valitse liikkeet!");
             history.unshift(entry); localStorage.setItem('hist_v105', JSON.stringify(history.slice(0,50))); alert("Tallennettu!"); renderMain();
         }
+        function showQuickMenu(e, index) { const menu = document.getElementById('quickMenu'); const rect = e.currentTarget.getBoundingClientRect(); menu.style.display = 'block'; menu.style.top = (rect.bottom + window.scrollY) + 'px'; menu.style.left = rect.left + 'px'; menu.innerHTML = quickMoves.map(m => `<div onclick="selectQuickMove('${m}', ${index})">${m}</div>`).join(''); const cl = () => { menu.style.display='none'; document.removeEventListener('click', cl); }; setTimeout(() => document.addEventListener('click', cl), 10); }
+        function selectQuickMove(name, index) { document.getElementById(`en_${index}`).value = name; document.getElementById('quickMenu').style.display = 'none'; }
+
         window.onload = renderMain;
     </script>
 </body>
