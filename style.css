@@ -132,46 +132,27 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 .help-text { font-size: 14px; line-height: 1.6; }
 .del-btn-text { background:none; border:none; color:#f56565; font-size: 24px; cursor:pointer; padding:0; line-height:1; }
 
-/* Pehmeä purppura badge-valikko */
-.quick-menu.purple-theme {
-    background: #f3f0ff; /* Erittäin vaalea purppura tausta */
-    border: 1px solid #d6bcfa;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(107, 70, 193, 0.2);
-}
-
-.quick-menu.purple-theme div {
-    padding: 12px 16px;
-    border-bottom: 1px solid #e9d8fd;
-    color: #553c9a; /* Tummanpurppura teksti */
-    font-weight: 600;
-    transition: background 0.2s;
-}
-
-.quick-menu.purple-theme div:last-child {
-    border-bottom: none;
-}
-
-.quick-menu.purple-theme div:hover {
-    background: #e9d8fd;
-}
-
-/* Klikattava liikkeen nimi */
-.editable-ex-name {
-    cursor: pointer;
+/* Purppura Badge-pudotusvalikko liikkeille etusivulla */
+.select-wrapper.ex-change-purple {
+    background: #f3f0ff; /* Vaalea purppura tausta */
+    border: 1px solid #d6bcfa; /* Purppura reunus */
+    border-radius: 12px;
+    height: 34px; /* Hieman matalampi kuin ohjelmavalikko */
+    width: auto; /* Sovittuu tekstin pituuteen */
     display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 2px 8px;
-    border-radius: 8px;
-    transition: background 0.2s;
+    margin-bottom: 5px;
 }
 
-.editable-ex-name:hover {
-    background: var(--bolt-bg); /* Käytetään olemassa olevaa pehmeää purppuraa */
-}
-
-.editable-ex-name .edit-icon {
+.select-wrapper.ex-change-purple select {
+    color: #553c9a; /* Tummanpurppura teksti */
+    font-weight: 700;
     font-size: 14px;
-    opacity: 0.5;
+    padding: 0 30px 0 12px;
+    letter-spacing: 0.5px;
+}
+
+/* Nuoli-ikoni purppuraan valikkoon */
+.select-wrapper.ex-change-purple::after {
+    color: #805ad5; /* Purppura nuoli */
+    font-size: 18px;
 }
