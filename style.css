@@ -179,7 +179,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 .edit-ex-block .edit-row-top span,
 #quickMoveSettings div span {
     display: block;      /* Pakottaa tekstin omalle rivilleen */
-    margin-bottom: 8px;  /* Säätää välin määrää (muuta luvun kokoa jos haluat enemmän/vähemmän) */
+    margin-bottom: 4px;  /* Säätää välin määrää (muuta luvun kokoa jos haluat enemmän/vähemmän) */
     font-size: 12px;
     font-weight: 700;
 }
@@ -187,5 +187,5 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 /* Lisää hieman tilaa koko rivien välille, jotta asetussivu on ilmavamman näköinen */
 #barSettings div, 
 #quickMoveSettings div {
-    margin-bottom: 15px; 
+    margin-bottom: 5px; 
 }
