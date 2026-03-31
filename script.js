@@ -98,9 +98,8 @@ function renderMain() {
     <div class="select-wrapper ex-change-purple">
         <select onchange="applyQuickChangeMain('${ex.id}', this.value)">
             <option value="${ex.n}" selected>${ex.n}</option>
-            
             ${quickMoves
-                .filter(m => m !== ex.n) // Ei näytetä nykyistä liikettä kahdesti
+                .filter(m => m !== ex.n)
                 .map(m => `<option value="${m}">${m}</option>`)
                 .join('')}
         </select>
@@ -252,21 +251,16 @@ function showQuickMenuAtMain(e, exId) {
     setTimeout(() => document.addEventListener('click', closeMenu), 10);
 }
 
-// Päivittää liikkeen nimen etusivun pudotusvalikosta
+// Päivittää liikkeen nimen etusivulla lennosta
 function applyQuickChangeMain(exId, newName) {
-    // Etsitään oikea liike nykyisestä ohjelmasta
     const ex = customP[curKey].exs.find(e => e.id === exId);
-    
     if (ex && ex.n !== newName) {
-        // Päivitetään nimi ohjelmaan
         ex.n = newName;
-        
-        // Tallennetaan muutos selaimeen
+        // Tallennetaan muutos localStorageen
         localStorage.setItem('cp_v105', JSON.stringify(customP));
-        
-        // Päivitetään etusivu, jotta "Viimeksi käytetyt painot" -badge päivittyy myös
         renderMain();
-    }
+            }
+    document.getElementById('quickMenu').style.display = 'none';
 }
 
 // Käynnistys
