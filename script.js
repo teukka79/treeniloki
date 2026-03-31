@@ -95,9 +95,15 @@ function renderMain() {
         const row = document.createElement('div'); row.className = 'ex-row';
         row.innerHTML = `
         <div class="ex-row-top">
-    <div class="editable-ex-name" onclick="showQuickMenuAtMain(event, '${ex.id}')">
-        <b style="font-size:17px; color:var(--text);">${ex.n}</b>
-        <span class="material-symbols-rounded edit-icon">edit</span>
+    <div class="select-wrapper ex-change-purple">
+        <select onchange="applyQuickChangeMain('${ex.id}', this.value)">
+            <option value="${ex.n}" selected>${ex.n}</option>
+            
+            ${quickMoves
+                .filter(m => m !== ex.n) // Ei näytetä nykyistä liikettä kahdesti
+                .map(m => `<option value="${m}">${m}</option>`)
+                .join('')}
+        </select>
     </div>
 </div>
         <div class="ex-row-middle">
