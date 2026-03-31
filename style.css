@@ -132,27 +132,46 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 .help-text { font-size: 14px; line-height: 1.6; }
 .del-btn-text { background:none; border:none; color:#f56565; font-size: 24px; cursor:pointer; padding:0; line-height:1; }
 
-/* Purppura Badge-pudotusvalikko liikkeille etusivulla */
+/* Purppura Badge-valikko (kapseli) */
 .select-wrapper.ex-change-purple {
-    background: #f3f0ff; /* Vaalea purppura tausta */
-    border: 1px solid #d6bcfa; /* Purppura reunus */
-    border-radius: 12px;
-    height: 34px; /* Hieman matalampi kuin ohjelmavalikko */
-    width: auto; /* Sovittuu tekstin pituuteen */
+    background: #f3f0ff; /* Pehmeä purppura tausta */
+    border: none;
+    border-radius: 10px; /* Samanlainen pyöristys kuin muissa badgeissa */
     display: inline-flex;
-    margin-bottom: 5px;
+    align-items: center;
+    position: relative;
+    padding: 0;
+    margin-bottom: 8px;
+    height: 32px; /* Napakka korkeus */
 }
 
 .select-wrapper.ex-change-purple select {
-    color: #553c9a; /* Tummanpurppura teksti */
-    font-weight: 700;
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    border: none;
+    color: #805ad5; /* Purppura teksti */
+    font-weight: 800;
     font-size: 14px;
-    padding: 0 30px 0 12px;
-    letter-spacing: 0.5px;
+    /* Lisää tilaa oikealle, jotta nuoli ei peitä tekstiä */
+    padding: 0 32px 0 12px; 
+    cursor: pointer;
+    outline: none;
+    font-family: inherit;
+    width: auto;
 }
 
-/* Nuoli-ikoni purppuraan valikkoon */
+/* Nuoli-ikoni badgen sisällä */
 .select-wrapper.ex-change-purple::after {
-    color: #805ad5; /* Purppura nuoli */
-    font-size: 18px;
+    content: '\e5cf'; /* Material icon "expand_more" */
+    font-family: 'Material Symbols Rounded';
+    position: absolute;
+    right: 8px; /* Nuoli hieman irti reunasta */
+    color: #805ad5;
+    font-size: 20px;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
 }
+
+/* Poistettu hover-efektit, jotta tyyli pysyy staattisena */
