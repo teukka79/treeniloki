@@ -174,4 +174,18 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     align-items: center;
 }
 
-/* Poistettu hover-efektit, jotta tyyli pysyy staattisena */
+/* Lisää väliä asetusten otsikkotekstin ja syöttökentän väliin */
+#barSettings div span, 
+.edit-ex-block .edit-row-top span,
+#quickMoveSettings div span {
+    display: block;      /* Pakottaa tekstin omalle rivilleen */
+    margin-bottom: 8px;  /* Säätää välin määrää (muuta luvun kokoa jos haluat enemmän/vähemmän) */
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Lisää hieman tilaa koko rivien välille, jotta asetussivu on ilmavamman näköinen */
+#barSettings div, 
+#quickMoveSettings div {
+    margin-bottom: 15px; 
+}
