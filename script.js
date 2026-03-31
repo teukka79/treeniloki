@@ -94,7 +94,12 @@ function renderMain() {
         const lastW = findLastWeight(ex.n);
         const row = document.createElement('div'); row.className = 'ex-row';
         row.innerHTML = `
-        <div class="ex-row-top"><b style="font-size:17px; color:var(--text);">${ex.n}</b></div>
+        <div class="ex-row-top">
+    <div class="editable-ex-name" onclick="showQuickMenuAtMain(event, '${ex.id}')">
+        <b style="font-size:17px; color:var(--text);">${ex.n}</b>
+        <span class="material-symbols-rounded edit-icon">edit</span>
+    </div>
+</div>
         <div class="ex-row-middle">
             <div class="input-group"><span class="input-label">Paino</span><div class="input-wrapper"><input type="number" step="0.5" class="c-w-input" id="w_${ex.id}" oninput="uTot('${ex.id}','${ex.b}')" placeholder="0"><span class="unit">kg</span></div></div>
             <div class="input-group"><span class="input-label">Sarjat</span><select class="c-s-select" id="s_${ex.id}" onchange="updateDots('${ex.id}')">${SER_OPTS.map(v=>`<option value="${v}" ${ex.s==v?'selected':''}>${v}</option>`).join('')}</select></div>
@@ -217,6 +222,39 @@ function showQuickMenu(e, index) {
 function selectQuickMove(name, index) { 
     document.getElementById(`en_${index}`).value = name; 
     document.getElementById('quickMenu').style.display = 'none'; 
+}
+
+// Avaa purppura valikko etusivulla
+function showQuickMenuAtMain(e, exId) {
+    const menu = document.getElementById('quickMenu');
+    const rect = e.currentTarget.getBoundingClientRect();
+    
+    menu.className = 'quick-menu purple-theme'; // Käytetään uutta purppuraa teemaa
+    menu.style.display = 'block';
+    menu.style.top = (rect.bottom + window.scrollY + 5) + 'px';
+    menu.style.left = rect.left + 'px';
+    
+    // Luodaan valikko GitHubista ladatuista liikkeistä
+    menu.innerHTML = quickMoves.map(m => `
+        <div onclick="applyQuickChange('${exId}', '${m}')">${m}</div>
+    `).join('');
+    
+    const closeMenu = () => { 
+        menu.style.display = 'none'; 
+        document.removeEventListener('click', closeMenu); 
+    };
+    setTimeout(() => document.addEventListener('click', closeMenu), 10);
+}
+
+// Päivittää liikkeen nimen etusivulla lennosta
+function applyQuickChange(exId, newName) {
+    // Etsitään oikea liike nykyisestä ohjelmasta ja päivitetään se väliaikaisesti
+    const ex = customP[curKey].exs.find(e => e.id === exId);
+    if (ex) {
+        ex.n = newName;
+        renderMain(); // Päivitetään näkymä
+    }
+    document.getElementById('quickMenu').style.display = 'none';
 }
 
 // Käynnistys
