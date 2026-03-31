@@ -30,6 +30,7 @@
             --bolt-color: #6b46c1;
             --home-btn-bg: rgba(74, 85, 104, 0.1);
             --home-btn-text: #4a5568;
+            --timer-purple: #805ad5;
         }
 
         [data-theme="dark"] {
@@ -54,17 +55,19 @@
             --bolt-color: #d6bcfa;
             --home-btn-bg: rgba(203, 213, 224, 0.15);
             --home-btn-text: #cbd5e0;
+            --timer-purple: #b794f4;
         }
         
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: var(--bg-base); color: var(--text); padding: 20px 0 140px 0; margin: 0; box-sizing: border-box; }
         .glass-btn { padding: 0 14px; border-radius: 10px; font-family: inherit; font-weight: 800; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; height: 48px; border: none; text-transform: uppercase; box-sizing: border-box; transition: opacity 0.2s; }
         .glass-btn:active { opacity: 0.7; }
-        .header { display: grid; grid-template-columns: 48px 1fr 48px 48px; gap: 10px; align-items: center; width: 92%; max-width: 500px; margin: 0 auto 20px auto; }
+        .header { display: grid; grid-template-columns: 48px 48px 1fr 48px 48px; gap: 10px; align-items: center; width: 92%; max-width: 500px; margin: 0 auto 20px auto; }
         .header h3 { text-align: center; font-size: 16px; font-weight: 900; margin: 0; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text); }
         .material-symbols-rounded { font-size: 26px; color: inherit; vertical-align: middle; }
         .icon-btn { background: var(--glass-card); border: 1px solid var(--border); border-radius: 14px; width: 48px; height: 48px; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px); padding: 0; color: var(--text); box-sizing: border-box; transition: transform 0.1s; }
         .icon-btn:active { transform: scale(0.92); }
         .btn-hist { color: var(--accent); }
+        .btn-timer { color: var(--timer-purple) !important; }
         .btn-theme { color: var(--amber-icon); }
         .btn-settings { color: var(--slate-icon); }
         .btn-home-settings { background: var(--home-btn-bg); color: var(--home-btn-text); border: 1px solid var(--border); }
@@ -85,11 +88,20 @@
         .input-group { display: flex; flex-direction: column; gap: 4px; align-items: center; justify-content: flex-end; }
         .input-label { font-size: 9px; font-weight: 900; text-transform: uppercase; opacity: 0.6; color: var(--text); }
         .input-wrapper { position: relative; width: 75px; height: 38px; }
-        .input-wrapper span.unit { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 12px; font-weight: 800; opacity: 0.5; color: var(--text); }
-        .c-w-input, .c-s-select { width: 75px; height: 38px; border-radius: 10px; border: 2px solid var(--chk-border); text-align: center; background: var(--input-bg); font-size: 15px; font-weight: 800; color: var(--text); outline: none; appearance: none; box-sizing: border-box; }
+        
+        .set-tracker { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+        .set-dot { width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--chk-border); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; cursor: pointer; background: var(--input-bg); box-sizing: border-box; transition: all 0.2s; }
+        .set-dot.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+        .input-wrapper span.unit { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 12px; font-weight: 800; opacity: 0.5; color: var(--text); pointer-events: none; }
+        input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        input[type=number] { -moz-appearance: textfield; }
+
+        .c-w-input, .c-s-select { width: 75px; height: 38px; border-radius: 10px; border: 2px solid var(--chk-border); text-align: center; text-align-last: center; background: var(--input-bg); font-size: 15px; font-weight: 800; color: var(--text); outline: none; appearance: none; box-sizing: border-box; }
         .styled-checkbox { width: 38px; height: 38px; border-radius: 10px; border: 2px solid var(--chk-border); appearance: none; -webkit-appearance: none; background: var(--input-bg); position: relative; cursor: pointer; margin: 0; box-sizing: border-box; }
         .styled-checkbox:checked { background: var(--accent); border-color: var(--accent); }
-        .styled-checkbox:checked::after { content: '✓'; position: absolute; color: white; font-size: 26px; left: 7px; top: 0px; font-weight: 900; }
+        .styled-checkbox:checked::after { content: '✓'; position: absolute; color: white; font-size: 26px; left: 50%; top: 50%; transform: translate(-50%, -50%); font-weight: 900; line-height: 1; }
+
         .nav { position: fixed; bottom: 0; left: 0; right: 0; padding: 20px; background: rgba(255,255,255,0.3); backdrop-filter: blur(15px); border-top: 1px solid var(--border); z-index: 1000; }
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-base); z-index: 9999; overflow-y: auto; padding: 20px 0; }
         .edit-input { width: 100%; padding: 8px; border-radius: 10px; border: 1px solid var(--border); background: var(--input-bg); color: var(--text); height: 44px; box-sizing: border-box; font-weight: 500; font-size: 15px; }
@@ -102,12 +114,20 @@
         .quick-select-btn:active { transform: scale(0.9); }
         .quick-menu { position: absolute; background: var(--bg-base); border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); z-index: 10000; max-height: 200px; overflow-y: auto; width: 200px; display: none; }
         .quick-menu div { padding: 12px; border-bottom: 1px solid var(--border); cursor: pointer; font-size: 14px; font-weight: 500; }
+        #restTimer { display: none; position: fixed; top: 15px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; padding: 10px 20px; border-radius: 50px; font-weight: 900; z-index: 10001; align-items: center; gap: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
     </style>
 </head>
 <body>
 
+    <div id="restTimer">
+        <span class="material-symbols-rounded">timer</span>
+        <span id="timerDisplay">01:30</span>
+        <span class="material-symbols-rounded" style="cursor:pointer; font-size: 18px;" onclick="stopTimer()">close</span>
+    </div>
+
     <div class="header">
         <button class="icon-btn btn-hist" onclick="openHistory()"><span class="material-symbols-rounded">history</span></button>
+        <button class="icon-btn btn-timer" onclick="changeRestTime()"><span class="material-symbols-rounded">timer</span></button>
         <h3>TREENILOKI</h3>
         <button class="icon-btn btn-theme" onclick="toggleTheme()"><span class="material-symbols-rounded" id="themeIcon">light_mode</span></button>
         <button class="icon-btn btn-settings" onclick="openEdit()"><span class="material-symbols-rounded">tune</span></button>
@@ -211,23 +231,46 @@
     </div>
 
     <script>
-        // --- KORJAUS: Kaikki muuttujat alustetaan heti, jotta ne ovat saatavilla funktioissa ---
         const BAR_DEFAULTS = { "Suora tanko": 9.9, "Mutka tanko": 6.8, "Hex tanko": 17.0 };
         const MOVE_DEFAULTS = ["Penkkipunnerrus", "Kyykky", "Maastaveto", "Pystypunnerrus tangolla", "Kulmasoutu tangolla"];
-        const SER_OPTS = [1, 2, 3, 4, 5, 6], REP_OPTS = ["1-5", "6-8", "8-10", "10-12", "12-15", "15-20"];
+        const SER_OPTS = [1, 2, 3, 4, 5, 6, 7, 8], REP_OPTS = ["1-5", "6-8", "8-10", "10-12", "12-15", "15-20"];
         
-        // --- KORJAUS: JSON.parse() turvallisemmin || oletusarvot ---
         let barWeights = JSON.parse(localStorage.getItem('bw_v105') || JSON.stringify(BAR_DEFAULTS));
         let quickMoves = JSON.parse(localStorage.getItem('qm_v105') || JSON.stringify(MOVE_DEFAULTS));
         let customP = JSON.parse(localStorage.getItem('cp_v105') || JSON.stringify({ "v1": { name: "Voima", exs: [{ id: "e1", n: "Pystypunnerrus", s: "3", r: "8-10", b: "Suora tanko" }] } }));
         let history = JSON.parse(localStorage.getItem('hist_v105') || "[]");
+        let restSeconds = parseInt(localStorage.getItem('rest_v105')) || 90;
         
-        // --- KORJAUS: curKey pitää varmistaa heti alussa ---
         let curKey = localStorage.getItem('last_v105');
-        if (!curKey || !customP[curKey]) {
-            curKey = Object.keys(customP)[0];
-        }
+        if (!curKey || !customP[curKey]) { curKey = Object.keys(customP)[0]; }
         let tempEditKey = curKey;
+
+        let timerInterval;
+        function startTimer() {
+            stopTimer();
+            document.getElementById('restTimer').style.display = 'flex';
+            let timeLeft = restSeconds;
+            const display = document.getElementById('timerDisplay');
+            const updateDisplay = () => {
+                let mins = Math.floor(timeLeft / 60), secs = timeLeft % 60;
+                display.innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            };
+            updateDisplay();
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                if (timeLeft < 0) { clearInterval(timerInterval); display.innerText = "VALMIS!"; }
+                else { updateDisplay(); }
+            }, 1000);
+        }
+        function stopTimer() { clearInterval(timerInterval); document.getElementById('restTimer').style.display = 'none'; }
+        
+        function changeRestTime() {
+            const newTime = prompt("Aseta tauon pituus (sekunteina):", restSeconds);
+            if (newTime !== null && !isNaN(newTime) && newTime > 0) {
+                restSeconds = parseInt(newTime);
+                localStorage.setItem('rest_v105', restSeconds);
+            }
+        }
 
         function openHelp() { document.getElementById('helpModal').style.display = 'block'; }
         function formatD(d) { if(!d) return ""; const s = d.split('-'); return `${s[2]}.${s[1]}.${s[0]}`; }
@@ -265,16 +308,38 @@
                 <div class="ex-row-top"><b style="font-size:17px; color:var(--text);">${ex.n}</b></div>
                 <div class="ex-row-middle">
                     <div class="input-group"><span class="input-label">Paino</span><div class="input-wrapper"><input type="number" step="0.5" class="c-w-input" id="w_${ex.id}" oninput="uTot('${ex.id}','${ex.b}')" placeholder="0"><span class="unit">kg</span></div></div>
-                    <div class="input-group"><span class="input-label">Sarjat</span><select class="c-s-select" id="s_${ex.id}">${SER_OPTS.map(v=>`<option value="${v}" ${ex.s==v?'selected':''}>${v}</option>`).join('')}</select></div>
+                    <div class="input-group"><span class="input-label">Sarjat</span><select class="c-s-select" id="s_${ex.id}" onchange="updateDots('${ex.id}')">${SER_OPTS.map(v=>`<option value="${v}" ${ex.s==v?'selected':''}>${v}</option>`).join('')}</select></div>
                     <div class="input-group"><span class="input-label">Toistot</span><select class="c-s-select" id="r_${ex.id}">${REP_OPTS.map(v=>`<option value="${v}" ${ex.r==v?'selected':''}>${v}</option>`).join('')}</select></div>
                     <div class="input-group"><span class="input-label">Tehty</span><input type="checkbox" class="styled-checkbox" id="c_${ex.id}"></div>
                 </div>
                 <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:6px;">
                     <span class="badge badge-weight" id="t_${ex.id}">${getInitialLabel(ex.b)}</span>
                     <span class="badge" style="background:var(--badge-bg); color:var(--badge-text);">Viimeksi: ${lastW}kg</span>
-                </div>`;
+                </div>
+                <div class="set-tracker" id="sets_${ex.id}">${generateDots(ex.s, ex.id)}</div>`;
                 card.querySelector('#rows').appendChild(row);
             });
+        }
+
+        function generateDots(n, id) { 
+            let h=''; 
+            for(let i=1;i<=n;i++) { h+=`<div class="set-dot" id="dot_${id}_${i}" onclick="toggleSet(this, '${id}')">${i}</div>`; }
+            return h; 
+        }
+
+        function toggleSet(dot, id) {
+            dot.classList.toggle('active');
+            if(dot.classList.contains('active')) {
+                startTimer();
+            }
+            const dots = document.querySelectorAll(`#sets_${id} .set-dot`);
+            const actives = document.querySelectorAll(`#sets_${id} .set-dot.active`);
+            document.getElementById('c_'+id).checked = (actives.length === dots.length && dots.length > 0);
+        }
+
+        function updateDots(id) {
+            const n = document.getElementById('s_'+id).value;
+            document.getElementById('sets_'+id).innerHTML = generateDots(n, id);
         }
 
         function getInitialLabel(bName) { const barW = barWeights[bName] || 0; return (!bName || bName === "Ei tankoa") ? "0.0kg" : `Yht: ${barW.toFixed(1)}kg (sis. tanko)`; }
@@ -282,6 +347,7 @@
         function changeW() { curKey = document.getElementById('workoutSelector').value; localStorage.setItem('last_v105', curKey); renderMain(); }
         function toggleTheme() { const d = document.documentElement; const isDark = d.getAttribute('data-theme') === 'dark'; d.setAttribute('data-theme', isDark ? 'light' : 'dark'); document.getElementById('themeIcon').innerText = isDark ? 'light_mode' : 'dark_mode'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        
         function openEdit() { document.getElementById('editModal').style.display = 'block'; document.getElementById('editProgSelector').innerHTML = Object.keys(customP).map(k => `<option value="${k}" ${k===curKey?'selected':''}>${customP[k].name}</option>`).join('') || ''; loadEditProg(); loadBarSettings(); loadQuickMoveSettings(); }
 
         function loadEditProg() {
@@ -345,7 +411,7 @@
             if(!entry.moves.length) return alert("Valitse liikkeet!");
             history.unshift(entry); localStorage.setItem('hist_v105', JSON.stringify(history.slice(0,50))); alert("Tallennettu!"); renderMain();
         }
-        function showQuickMenu(e, index) { const menu = document.getElementById('quickMenu'); const rect = e.currentTarget.getBoundingClientRect(); menu.style.display = 'block'; menu.style.top = (rect.bottom + window.scrollY) + 'px'; menu.style.left = rect.left + 'px'; menu.innerHTML = quickMoves.map(m => `<div onclick="selectQuickMove('${m}', ${index})">${m}</div>`).join(''); const cl = () => { menu.style.display='none'; document.removeEventListener('click', cl); }; setTimeout(() => document.addEventListener('click', cl), 10); }
+        function showQuickMenu(e, index) { const menu = document.getElementById('quickMenu'); const rect = e.currentTarget.getBoundingClientRect(); menu.style.display = 'block'; menu.style.top = (rect.bottom + window.scrollY) + 'px'; menu.style.left = rect.left + 'px'; menu.innerHTML = quickMoves.map(m => `<div onclick=\"selectQuickMove('${m}', ${index})\">${m}</div>`).join(''); const cl = () => { menu.style.display='none'; document.removeEventListener('click', cl); }; setTimeout(() => document.addEventListener('click', cl), 10); }
         function selectQuickMove(name, index) { document.getElementById(`en_${index}`).value = name; document.getElementById('quickMenu').style.display = 'none'; }
 
         window.onload = renderMain;
