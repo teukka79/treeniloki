@@ -252,15 +252,21 @@ function showQuickMenuAtMain(e, exId) {
     setTimeout(() => document.addEventListener('click', closeMenu), 10);
 }
 
-// Päivittää liikkeen nimen etusivulla lennosta
-function applyQuickChange(exId, newName) {
-    // Etsitään oikea liike nykyisestä ohjelmasta ja päivitetään se väliaikaisesti
+// Päivittää liikkeen nimen etusivun pudotusvalikosta
+function applyQuickChangeMain(exId, newName) {
+    // Etsitään oikea liike nykyisestä ohjelmasta
     const ex = customP[curKey].exs.find(e => e.id === exId);
-    if (ex) {
+    
+    if (ex && ex.n !== newName) {
+        // Päivitetään nimi ohjelmaan
         ex.n = newName;
-        renderMain(); // Päivitetään näkymä
+        
+        // Tallennetaan muutos selaimeen
+        localStorage.setItem('cp_v105', JSON.stringify(customP));
+        
+        // Päivitetään etusivu, jotta "Viimeksi käytetyt painot" -badge päivittyy myös
+        renderMain();
     }
-    document.getElementById('quickMenu').style.display = 'none';
 }
 
 // Käynnistys
