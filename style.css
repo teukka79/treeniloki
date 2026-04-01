@@ -156,7 +156,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     background: transparent;
     border: none;
     color: #553c9a; /* Purppura teksti */
-    font-weight: 800;
+    font-weight: 900;
     font-size: 14px;
     /* Lisää tilaa oikealle, jotta nuoli ei peitä tekstiä */
     padding: 0 32px 0 12px; 
@@ -179,13 +179,13 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     position: absolute;
     right: 8px; /* Nuoli hieman irti reunasta */
     color: #553c9a;
-    font-size: 20px;
+    font-size: 24px;
     pointer-events: none;
     display: flex;
     align-items: center;
     /* 1. TÄMÄ LIHAVOI NUOLEN: */
     /* wght (paino) voi olla 100-700. 600 on jämäkkä ja sopii tekstin painoon. */
-    font-variation-settings: 'wght' 600, 'GRAD' 0, 'opsz' 24;
+    font-variation-settings: 'wght' 700, 'GRAD' 0, 'opsz' 24;
 
     /* 2. POISTETAAN HAILAKKUUS (varmuuden vuoksi, jos edellisestä jäi): */
     opacity: 1.0;
