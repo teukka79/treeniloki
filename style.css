@@ -194,21 +194,3 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 #quickMoveSettings div {
     margin-bottom: 5px; 
 }
-
-.bolt-nappi {
-  /* Tehdään tästä saman kokoinen laatikko kuin roskakorista */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;   /* Säädä tämä vastaamaan roskakorin leveyttä */
-  height: 44px;  /* Säädä tämä vastaamaan roskakorin korkeutta */
-  
-  /* Taustaväri ja pyöristys kuvasi perusteella */
-  background-color: #ede9fe; 
-  border-radius: 8px;
-  cursor: pointer;
-  border: none;
-  padding: 0;
-  flex-shrink: 0;
-}
-}
