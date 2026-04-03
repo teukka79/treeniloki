@@ -240,3 +240,60 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     color: #d6bcfa; /* Vaaleampi nuoli */
 }
 
+/* Napit vaaleassa teemassa */
+.btn-save-custom { background: rgba(72, 187, 120, 0.2) !important; color: #276749 !important; }
+.btn-reset-custom { background: rgba(245, 101, 101, 0.2) !important; color: #c53030 !important; }
+
+/* --- DEEP GLASS NAPIT TUMMASSA TEEMASSA --- */
+
+/* Varmistetaan, että yleinen lasi-efekti on päällä tummassa teemassa */
+[data-theme="dark"] .glass-btn {
+    background: transparent; /* Sallii alla olevien värien näkyä */
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Tallenna-nappi */
+[data-theme="dark"] .btn-save-deep {
+    background: var(--save-green-bg) !important;
+    color: var(--save-green-text) !important;
+    border: 1px solid rgba(0, 255, 136, 0.3) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: none !important; /* Poistetaan varjot, jotka voivat sumentaa reunaa */
+}
+
+/* Nollaa-nappi */
+[data-theme="dark"] .btn-reset-deep {
+    background: var(--reset-red-bg) !important;
+    color: var(--reset-red-text) !important;
+    border: 1px solid rgba(255, 85, 85, 0.3) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: none !important;
+}
+
+/* VARMISTUS: Poistetaan mahdollinen yleinen huntu */
+[data-theme="dark"] .glass-btn::before,
+[data-theme="dark"] .glass-btn::after {
+    display: none !important; /* Poistaa mahdolliset päällekkäiset kerrokset */
+}
+
+/* VAALEA TEEMA (Oletus): Varmistetaan, että värit näkyvät */
+.btn-save-custom { 
+    background: rgba(72, 187, 120, 0.2) !important; 
+    color: #276749 !important; 
+}
+.btn-reset-custom { 
+    background: rgba(245, 101, 101, 0.2) !important; 
+    color: #c53030 !important; 
+}
+
+[data-theme="dark"] .nav {
+    /* UUSI VÄRI (Sama kuin kortit, 95% peittävyys) */
+    background: rgba(45, 55, 72, 0.95) !important; 
+    
+    /* Pidetään nämä samana: */
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
