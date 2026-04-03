@@ -297,3 +297,16 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     -webkit-backdrop-filter: blur(20px) !important;
     border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
+
+/* Tumman teeman nuolien (spin buttons) värin säätö */
+[data-theme="dark"] input[type="number"]::-webkit-inner-spin-button,
+[data-theme="dark"] input[type="number"]::-webkit-outer-spin-button {
+    /* Tämä muuttaa selaimen oletusnuolien väriä kääntämällä ne vaaleiksi */
+    filter: invert(1) brightness(2);
+    cursor: pointer;
+}
+
+/* Firefox-tuki */
+[data-theme="dark"] input[type="number"] {
+    color-scheme: dark;
+}
